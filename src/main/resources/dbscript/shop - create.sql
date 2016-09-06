@@ -30,7 +30,7 @@ create table notice
    state                int not null comment '状态',
    time                 time not null comment '创建时间',
    primary key (noid)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*==============================================================*/
 /* table: classify                                              */
@@ -40,7 +40,7 @@ create table classify
    cid                  int not null auto_increment comment '分类id',
    category             varchar(256) not null comment '商品内别',
    primary key (cid)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*==============================================================*/
 /* table: evaluates                                             */
@@ -56,7 +56,7 @@ create table evaluates
    evaluate             text comment '评价',
    time                 time not null comment '最后修改时间',
    primary key (eid)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*==============================================================*/
 /* table: goods                                                 */
@@ -81,7 +81,7 @@ create table goods
    state                char(1) not null comment '状态',
    ctime                time not null comment '创建时间',
    primary key (gid)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*==============================================================*/
 /* table: notes                                                 */
@@ -92,12 +92,12 @@ create table notes
    uid                  int comment '用户id',
    gid                  int not null comment '商品id',
    title                varchar(40) not null comment '标题',
-   content              text  '内容',
+   content              text comment'内容',
    readperson           int comment '查看人',
    state                int comment '状态，0-未查看，1-已查看',
    time                 time not null comment '留言时间',
    primary key (nid)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*==============================================================*/
 /* table: orders                                                */
@@ -118,7 +118,7 @@ create table orders
    time                 time not null comment '最后修改时间',
    note                 text comment '备注',
    primary key (oid)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*==============================================================*/
 /* table: user                                                  */
@@ -140,7 +140,7 @@ create table user
    role                 int not null comment '角色',
    time                 time not null comment '创建时间',
    primary key (uid)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 alter table notice add constraint foreign key (uid)
       references user (uid) on delete restrict on update restrict;

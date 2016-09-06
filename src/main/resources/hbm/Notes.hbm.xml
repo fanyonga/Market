@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.groupfour.entity.Notes" table="notes" schema="test">
+        <id name="nid">
+            <column name="nid" sql-type="int(11)"/>
+            <generator class="native"/>
+        </id>
+        <many-to-one name="user" class="com.groupfour.entity.User">
+            <column name="uid"/>
+        </many-to-one>
+        <many-to-one name="goods" class="com.groupfour.entity.Goods">
+            <column name="gid"/>
+        </many-to-one>
+        <property name="title">
+            <column name="title" sql-type="varchar(40)" length="40"/>
+        </property>
+        <property name="content">
+            <column name="content" sql-type="text" not-null="true"/>
+        </property>
+        <property name="readperson">
+            <column name="readperson" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="state">
+            <column name="state" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="time">
+            <column name="time" sql-type="time"/>
+        </property>
+    </class>
+</hibernate-mapping>
