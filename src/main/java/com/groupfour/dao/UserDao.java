@@ -40,8 +40,8 @@ public interface UserDao {
     List<User> selectUserList();
 
     /**
-     * 根据用户的登陆信息获取一个用户
-     * @param user
+     * 验证用户的登陆信息（账号和密码）并获取一个用户
+     * @param user 非空登陆成功
      * @return
      */
     User selectUserByAccount(User user);

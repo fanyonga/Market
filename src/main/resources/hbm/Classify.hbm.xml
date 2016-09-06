@@ -9,7 +9,7 @@
             <column name="cid" sql-type="int(11)"/>
             <generator class="native"/>
         </id>
-        <property name="category" unique-key="true">
+        <property name="category" unique-key="true" not-null="true">
             <column name="category" sql-type="varchar(256)" length="256"/>
         </property>
     </class>

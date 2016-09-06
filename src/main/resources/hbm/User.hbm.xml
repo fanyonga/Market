@@ -9,10 +9,10 @@
             <column name="uid" sql-type="int(11)"/>
             <generator class="native"/>
         </id>
-        <property name="account" unique-key="true">
+        <property name="account" unique-key="true"  not-null="true">
             <column name="account" sql-type="varchar(20)" length="20"/>
         </property>
-        <property name="password">
+        <property name="password"  not-null="true">
             <column name="password" sql-type="varchar(20)" length="20"/>
         </property>
         <property name="username">
@@ -42,10 +42,10 @@
         <property name="note">
             <column name="note" sql-type="text" />
         </property>
-        <property name="role">
+        <property name="role"  not-null="true">
             <column name="role" sql-type="int(11)"/>
         </property>
-        <property name="time">
+        <property name="time"  not-null="true">
             <column name="time" sql-type="time"/>
         </property>
     </class>

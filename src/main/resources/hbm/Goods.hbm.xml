@@ -16,45 +16,45 @@
             <column name="cid"/>
         </many-to-one>
         <property name="category">
-            <column name="category" sql-type="char(20)" length="20" not-null="true"/>
+            <column name="category" sql-type="char(20)" length="20" />
         </property>
-        <property name="gname">
+        <property name="gname" not-null="true">
             <column name="gname" sql-type="char(20)" length="20"/>
         </property>
         <property name="parea">
-            <column name="parea" sql-type="int(11)" not-null="true"/>
+            <column name="parea" sql-type="int(11)" />
         </property>
         <property name="price">
-            <column name="price" sql-type="float" precision="-1" not-null="true"/>
+            <column name="price" sql-type="float" precision="-1" />
         </property>
         <property name="con">
-            <column name="con" sql-type="int(11)" not-null="true"/>
+            <column name="con" sql-type="int(11)" />
         </property>
         <property name="area">
-            <column name="area" sql-type="float" precision="-1" not-null="true"/>
+            <column name="area" sql-type="float" precision="-1" />
         </property>
         <property name="picture">
-            <column name="picture" sql-type="int(11)" not-null="true"/>
+            <column name="picture" sql-type="int(11)" />
         </property>
         <property name="content">
-            <column name="content" sql-type="char(20)" length="20" not-null="true"/>
+            <column name="content" sql-type="char(20)" length="20" />
         </property>
         <property name="phone">
-            <column name="phone" sql-type="char(20)" length="20" not-null="true"/>
+            <column name="phone" sql-type="char(20)" length="20" />
         </property>
         <property name="descript">
-            <column name="descript" sql-type="text" not-null="true"/>
+            <column name="descript" sql-type="text" />
         </property>
         <property name="rtime">
-            <column name="rtime" sql-type="time" not-null="true"/>
+            <column name="rtime" sql-type="time" />
         </property>
         <property name="stock">
-            <column name="stock" sql-type="int(11)" not-null="true"/>
+            <column name="stock" sql-type="int(11)" />
         </property>
-        <property name="state">
+        <property name="state" not-null="true">
             <column name="state" sql-type="char(1)" length="1"/>
         </property>
-        <property name="ctime">
+        <property name="ctime" not-null="true">
             <column name="ctime" sql-type="time"/>
         </property>
     </class>

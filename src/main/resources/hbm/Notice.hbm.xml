@@ -11,16 +11,16 @@
         <many-to-one name="user" class="com.groupfour.entity.User">
             <column name="uid"/>
         </many-to-one>
-        <property name="title">
+        <property name="title" not-null="true">
             <column name="title" sql-type="varchar(256)" length="256"/>
         </property>
         <property name="content">
-            <column name="content" sql-type="text" not-null="true"/>
+            <column name="content" sql-type="text" />
         </property>
-        <property name="state">
+        <property name="state" not-null="true">
             <column name="state" sql-type="int(11)"/>
         </property>
-        <property name="time">
+        <property name="time" not-null="true">
             <column name="time" sql-type="time"/>
         </property>
     </class>

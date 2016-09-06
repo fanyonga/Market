@@ -2,7 +2,7 @@ package com.groupfour.dao.impl;
 
 import com.groupfour.dao.UserDao;
 import com.groupfour.entity.User;
-import com.groupfour.until.HibernateHelper;
+import com.groupfour.util.HibernateHelper;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 

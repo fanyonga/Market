@@ -1,4 +1,4 @@
-package com.groupfour.until;
+package com.groupfour.util;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

@@ -1,6 +1,6 @@
 package util;
 
-import com.groupfour.until.HibernateHelper;
+import com.groupfour.util.HibernateHelper;
 import org.junit.Test;
 
 /**
