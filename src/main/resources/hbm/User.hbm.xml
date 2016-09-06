@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.groupfour.entity.User" table="user" schema="test">
+        <id name="uid">
+            <column name="uid" sql-type="int(11)"/>
+            <generator class="native"/>
+        </id>
+        <property name="account" unique-key="true">
+            <column name="account" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="password">
+            <column name="password" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="username">
+            <column name="username" sql-type="varchar(20)" length="20" />
+        </property>
+        <property name="sex">
+            <column name="sex" sql-type="char(1)" length="1" />
+        </property>
+        <property name="birth">
+            <column name="birth" sql-type="varchar(20)" length="20" />
+        </property>
+        <property name="phone">
+            <column name="phone" sql-type="varchar(13)" length="13" />
+        </property>
+        <property name="address">
+            <column name="address" sql-type="varchar(256)" length="256" />
+        </property>
+        <property name="qq">
+            <column name="qq" sql-type="varchar(11)" length="11" />
+        </property>
+        <property name="email">
+            <column name="email" sql-type="varchar(30)" length="30" />
+        </property>
+        <property name="pic">
+            <column name="pic" sql-type="varchar(256)" length="256" />
+        </property>
+        <property name="note">
+            <column name="note" sql-type="text" />
+        </property>
+        <property name="role">
+            <column name="role" sql-type="int(11)"/>
+        </property>
+        <property name="time">
+            <column name="time" sql-type="time"/>
+        </property>
+    </class>
+</hibernate-mapping>

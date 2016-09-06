@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.groupfour.entity.Evaluates" table="evaluates" schema="test">
+        <id name="eid">
+            <column name="eid" sql-type="int(11)"/>
+            <generator class="native"/>
+        </id>
+        <many-to-one name="orders" class="com.groupfour.entity.Orders">
+            <column name="oid"/>
+        </many-to-one>
+        <many-to-one name="user" class="com.groupfour.entity.User">
+            <column name="uid"/>
+        </many-to-one>
+        <many-to-one name="goods" class="com.groupfour.entity.Goods" fetch="join" optimistic-lock="false">
+            <column name="gid"/>
+        </many-to-one>
+        <property name="grade">
+            <column name="grade" sql-type="char(1)" length="1" not-null="true"/>
+        </property>
+        <property name="speed">
+            <column name="speed" sql-type="char(1)" length="1" not-null="true"/>
+        </property>
+        <property name="evaluate">
+            <column name="evaluate" sql-type="text" not-null="true"/>
+        </property>
+        <property name="time">
+            <column name="time" sql-type="time"/>
+        </property>
+    </class>
+</hibernate-mapping>

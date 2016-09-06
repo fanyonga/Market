@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.groupfour.entity.Goods" table="goods" schema="test">
+        <id name="gid">
+            <column name="gid" sql-type="int(11)"/>
+            <generator class="native"/>
+        </id>
+        <many-to-one name="user" class="com.groupfour.entity.User">
+            <column name="uid"/>
+        </many-to-one>
+        <many-to-one name="classify" class="com.groupfour.entity.Classify">
+            <column name="cid"/>
+        </many-to-one>
+        <property name="category">
+            <column name="category" sql-type="char(20)" length="20" not-null="true"/>
+        </property>
+        <property name="gname">
+            <column name="gname" sql-type="char(20)" length="20"/>
+        </property>
+        <property name="parea">
+            <column name="parea" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="price">
+            <column name="price" sql-type="float" precision="-1" not-null="true"/>
+        </property>
+        <property name="con">
+            <column name="con" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="area">
+            <column name="area" sql-type="float" precision="-1" not-null="true"/>
+        </property>
+        <property name="picture">
+            <column name="picture" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="content">
+            <column name="content" sql-type="char(20)" length="20" not-null="true"/>
+        </property>
+        <property name="phone">
+            <column name="phone" sql-type="char(20)" length="20" not-null="true"/>
+        </property>
+        <property name="descript">
+            <column name="descript" sql-type="text" not-null="true"/>
+        </property>
+        <property name="rtime">
+            <column name="rtime" sql-type="time" not-null="true"/>
+        </property>
+        <property name="stock">
+            <column name="stock" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="state">
+            <column name="state" sql-type="char(1)" length="1"/>
+        </property>
+        <property name="ctime">
+            <column name="ctime" sql-type="time"/>
+        </property>
+    </class>
+</hibernate-mapping>

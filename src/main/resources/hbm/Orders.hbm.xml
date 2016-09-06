@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.groupfour.entity.Orders" table="orders" schema="test">
+        <id name="oid">
+            <column name="oid" sql-type="int(11)"/>
+        </id>
+        <many-to-one name="goods" class="com.groupfour.entity.Goods">
+            <column name="gid"/>
+        </many-to-one>
+        <many-to-one name="user" class="com.groupfour.entity.User">
+            <column name="uid"/>
+        </many-to-one>
+        <property name="number">
+            <column name="number" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="price">
+            <column name="price" sql-type="float" precision="-1" not-null="true"/>
+        </property>
+        <property name="total">
+            <column name="total" sql-type="float" precision="-1" not-null="true"/>
+        </property>
+        <property name="way">
+            <column name="way" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="ostate">
+            <column name="ostate" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="pstate">
+            <column name="pstate" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="phone">
+            <column name="phone" sql-type="varchar(11)" length="11" not-null="true"/>
+        </property>
+        <property name="address">
+            <column name="address" sql-type="varchar(256)" length="256" not-null="true"/>
+        </property>
+        <property name="time">
+            <column name="time" sql-type="time"/>
+        </property>
+        <property name="note">
+            <column name="note" sql-type="text" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

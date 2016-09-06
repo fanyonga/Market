@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.url">jdbc:mysql://localhost:3306/test?useUnicode=true；characterEncoding=UTF-8</property>
+    <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+    <property name="connection.username">root</property>
+    <property name="connection.password">123456</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+    <!-- 控制台是否输出sql语句 -->
+    <property name="show_sql">true</property>
+    <property name="format_sql">true</property>
+
+    <property name="connection.pool_size">1</property>
+    <!--每次运行时更新数据库-->
+    <property name="hbm2ddl.update">update</property>
+
+    <!-- 使用getCurrentSession时必须配置 -->
+    <property name="hibernate.current_session_context_class">thread</property>
+
+    <mapping resource="hbm/Classify.hbm.xml"/>
+    <mapping resource="hbm/Evaluates.hbm.xml"/>
+    <mapping resource="hbm/Goods.hbm.xml"/>
+    <mapping resource="hbm/Notice.hbm.xml"/>
+    <mapping resource="hbm/Orders.hbm.xml"/>
+    <mapping resource="hbm/User.hbm.xml"/>
+
+  </session-factory>
+</hibernate-configuration>
