@@ -2,8 +2,8 @@
 <%
     String path=request.getContextPath();
     String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,9 +59,7 @@
         <div class="logo">
             <a href="index.html"><span>二次</span>购</a>
         </div>
-        <div class="header-right">
-            <a class="account" href="login.html">用户中心</a>
-        </div>
+
     </div>
 </div>
 

@@ -2,7 +2,9 @@
 <%
     String path=request.getContextPath();
     String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,10 +67,11 @@
 <div class="header">
     <div class="container">
         <div class="logo">
-            <a href="index.html"><span>二次</span>购</a>
+            <a href="index.jsp"><span>二次</span>购</a>
         </div>
         <div class="header-right">
-            <a class="account" href="login.jsp">用户中心</a>
+            <a class="login" href="login.jsp">登录/</a>
+            <a class="out" href="index.jsp">退出</a>
         </div>
     </div>
 
@@ -84,7 +87,7 @@
     <div class="categories">
         <div class="container">
             <div class="col-md-3 focus-grid">
-                <a href="categories.jsp">
+                <a href="categories.html">
                     <div class="focus-border">
                         <div class="focus-layout">
                             <div class="focus-image"><i class="fa fa-mobile"></i></div>
@@ -184,21 +187,21 @@
             <ul id="flexiselDemo3">
                 <li>
                     <div class="col-md-3 biseller-column">
-                        <a href="single.jsp">
+                        <a href="single.html">
                             <img src="images/p1.jpg"/>
                             <span class="price">&yen; 450</span>
                         </a>
                     </div>
 
                     <div class="col-md-3 biseller-column">
-                        <a href="single.jsp">
+                        <a href="single.html">
                             <img src="images/p2.jpg"/>
                             <span class="price">&yen; 399</span>
                         </a>
                     </div>
 
                     <div class="col-md-3 biseller-column">
-                        <a href="single.jsp">
+                        <a href="single.html">
                             <img src="images/p3.jpg"/>
                             <span class="price">&yen; 199</span>
                         </a>
@@ -282,7 +285,7 @@
     <div class="footer-bottom text-center">
         <div class="container">
             <div class="footer-logo">
-                <a href="index.jsp"><span>二次</span>购</a>
+                <a href="index.html"><span>二次</span>购</a>
             </div>
             <div class="copyrights">
                 <p>Copyright &copy; 2016.Company name All rights reserved.</p>

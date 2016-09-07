@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans   
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+       http://www.springframework.org/schema/aop   
+       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd  
+       http://www.springframework.org/schema/tx   
+       http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+       http://www.springframework.org/schema/context    
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+  
+  <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+  	<property name="driverClassName" value="${jdbc}"/>
+  	<property name="url" value="${jdbc.url}"/>
+  	<property name="username" value="${jdbc.username}"/>
+  	<property name="password" value="${jdbc.password}"/>
+  </bean>
+  
+  <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+  		<property name="dataSource" ref="dataSource"></property>
+  		<property name="mappingLocations">
+  			<list>
+  				<value>classpath:hbm/Classify.hbm.xml</value>
+				<value>classpath:hbm/Evaluates.hbm.xml</value>
+				<value>classpath:hbm/Goods.hbm.xml</value>
+				<value>classpath:hbm/Notes.hbm.xml</value>
+				<value>classpath:hbm/Notice.hbm.xml</value>
+				<value>classpath:hbm/Orders.hbm.xml</value>
+				<value>classpath:hbm/User.hbm.xml</value>
+
+			</list>
+  		</property>
+  		<property name="hibernateProperties">
+  			<props>
+  				<prop key="hbm2ddl.auto">create</prop>
+  				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+  				<prop key="hibernate.show_sql">true</prop>
+  				<prop key="hibernate.format_sql">true</prop>
+  			</props>
+  		</property>
+  </bean>
+	
+	<!-- 配置事务管理器 -->
+  <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+  	<property name="sessionFactory" ref="sessionFactory"></property>
+  </bean>	
+	
+	<!--&lt;!&ndash; 配置事物的传播特性 &ndash;&gt;-->
+	<!--<tx:advice id="txAdvice" transaction-manager="transactionManager">-->
+		<!--<tx:attribute>-->
+			<!--<tx:method name="save*" propagation="REQUIRED"></tx:method>-->
+			<!--<tx:method name="delete*" propagation="REQUIRED"></tx:method>-->
+			<!--<tx:method name="update*" propagation="REQUIRED"></tx:method>-->
+			<!--<tx:method name="get*" read-only="true" propagation="NOT_SUPPORTED"></tx:method>-->
+			<!--<tx:method name="*" read-only="true"></tx:method>-->
+		<!--</tx:attribute>-->
+	<!--</tx:advice>-->
+	<!---->
+	<!--&lt;!&ndash; 配置事务管理的对象 &ndash;&gt;-->
+	<!--<aop:cofig>-->
+		<!--<aop:pointcut id="allServiceMethod" expression="execution(* com.yonyou.lease.test.fanyong.spring.service.*.*(..))"-->
+		<!--</aop:point>-->
+		<!--<aop:advisor pointcut-ref="allServiceMethod" advice-ref="txAdvice"></aop:advisor>-->
+	<!--</aop:cofig>-->
+	<!---->
+	<!--<bean id="fooDao2" class="com.yonyou.lease.test.fanyong.spring.dao.FooDaoImp2">-->
+		<!--<property name="sessionFactory" ref="sessionFactory"></property>-->
+	<!--</bean>-->
+
+</beans>

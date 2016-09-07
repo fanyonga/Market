@@ -5,6 +5,7 @@ import com.groupfour.entity.Classify;
 import com.groupfour.util.HibernateHelper;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by fanyong on 16-9-7.

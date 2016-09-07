@@ -1,16 +1,10 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: fanyong
-  Date: 16-9-6
-  Time: 上午10:02
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String path=request.getContextPath();
     String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,9 +49,7 @@
         <div class="logo">
             <a href="index.html"><span>二次</span>购</a>
         </div>
-        <div class="header-right">
-            <a class="account" href="login.html">用户中心</a>
-        </div>
+
     </div>
 
     <div class="main-banner banner text-center">
