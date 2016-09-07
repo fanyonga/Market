@@ -15,17 +15,15 @@ public interface NotesDao {
      * 插入一个新的留言
      *
      * @param notes
-     * @return
      */
-    boolean insertNotes(Notes notes);
+    void insertNotes(Notes notes);
 
     /**
      * 删除一个已有的用户
      *
      * @param notes
-     * @return
      */
-    boolean deleteNotes(Notes notes);
+    void deleteNotes(Notes notes);
 
 //不允许用户更新留言
 //    /**

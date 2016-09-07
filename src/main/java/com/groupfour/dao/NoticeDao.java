@@ -13,17 +13,15 @@ public interface NoticeDao {
      * 插入一个新的公告
      *
      * @param notice
-     * @return
      */
-    boolean insertNotice(Notice notice);
+    void insertNotice(Notice notice);
 
     /**
      * 更新一个已有的公告信息（可以让它过期无效）
      *
      * @param notice
-     * @return
      */
-    boolean updateNotice(Notice notice);
+    void updateNotice(Notice notice);
 
     /**
      * 获得公告列表，并排序

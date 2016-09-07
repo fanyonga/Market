@@ -11,21 +11,22 @@ public interface ClassifyDao {
      * 插入一个新的分类
      *
      * @param classify
-     * @return
      */
-    boolean insertClassify(Classify classify);
+    void insertClassify(Classify classify);
 
     /**
      * 删除一个已有的分类
+     *
      * @param classify
-     * @return
      */
-    boolean deleteClassify(Classify classify);
+    void deleteClassify(Classify classify);
 
     /**
      * 修改一个分类的名称
+     *
+     * @param classify
      */
-    boolean updateClassifyOfCategory(Classify classify);
+    void updateClassifyOfCategory(Classify classify);
 
     /**
      * 根据分类id来获取分类信息

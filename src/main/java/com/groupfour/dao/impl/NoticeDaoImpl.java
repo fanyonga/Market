@@ -5,131 +5,59 @@ import com.groupfour.entity.Notice;
 import com.groupfour.util.HibernateHelper;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+import org.springframework.stereotype.Repository;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by fanyong on 16-9-7.
- */
-public class NoticeDaoImpl implements NoticeDao{
+@Repository("noticeDao")
+@Scope("prototype")
+public class NoticeDaoImpl extends HibernateDaoSupport implements NoticeDao{
 
-    public boolean insertNotice(Notice notice) {
-        Session session=null;
-        try {
-            session= HibernateHelper.getSession();
-            //如果新增的的公告是置顶的，则将当前置顶公告不再置顶
-            if(notice!=null&&notice.getState()==1){
-                Notice topNotice=selectTopNotice();
-                topNotice.setState(0);
-                session.update(topNotice);
-            }
-            session.beginTransaction();
-            session.save(notice);
-            session.getTransaction().commit();
-            return true;
-        }catch (Exception e){
-            session.getTransaction().rollback();
-            e.printStackTrace();
-            return false;
-        }finally {
-            if(session!=null){
-                try {
-                    session.close();
-                }catch (HibernateException e){
-                    e.printStackTrace();
-                }
-            }
-        }
+    //注入sessionFactory
+    @Resource
+    public void setMySessionFactory(SessionFactory sessionFactory){
+        super.setSessionFactory(sessionFactory);
     }
 
-    public boolean updateNotice(Notice notice) {
-        Session session=null;
-        try {
-            session= HibernateHelper.getSession();
-            session.beginTransaction();
-            //如果更新的公告是置顶的，则将当前置顶公告不再置顶
-            if(notice!=null&&notice.getState()==1){
-                Notice topNotice=selectTopNotice();
-                topNotice.setState(0);
-                session.update(topNotice);
-            }
-            session.update(notice);
-            session.getTransaction().commit();
-            return true;
-        }catch (Exception e){
-            session.getTransaction().rollback();
-            e.printStackTrace();
-            return false;
-        }finally {
-            if(session!=null){
-                try {
-                    session.close();
-                }catch (HibernateException e){
-                    e.printStackTrace();
-                }
-            }
+    public void insertNotice(Notice notice) {
+        if(notice.getState()==1){
+            Notice topNotice=selectTopNotice();
+            topNotice.setState(0);
+            getHibernateTemplate().update(topNotice);
         }
+        getHibernateTemplate().save(notice);
+    }
+
+    public void updateNotice(Notice notice) {
+        if(notice.getState()==1){
+            Notice topNotice=selectTopNotice();
+            topNotice.setState(0);
+            getHibernateTemplate().update(topNotice);
+        }
+        getHibernateTemplate().update(notice);
     }
 
     public List<Notice> selectNoticeList(int option) {
-        List<Notice> list=new ArrayList<Notice>();
-        Session session=null;
-        try{
-            session=HibernateHelper.getSession();
-            list=session.createQuery("from Notice where state!=2 order by state,time").list();
-            return list;
-        }catch (Exception e){
-            e.printStackTrace();
-            return null;
-        }finally {
-            if(session!=null){
-                try {
-                    session.close();
-                }catch (HibernateException e){
-                    e.printStackTrace();
-                }
-            }
+        List<Notice> list=null;
+        if(option==0){
+            list= (List<Notice>) getHibernateTemplate().find("from Notice order by state,time");
         }
+        else {
+            list= (List<Notice>) getHibernateTemplate().find("from Notice where state !=?  order by state,time",new Object[]{2});
+        }
+        return list;
     }
 
     public Notice selectTopNotice() {
-        Session session=null;
-        try{
-            session=HibernateHelper.getSession();
-            Notice notice=(Notice)session.createQuery("from Notice where state=1").uniqueResult();
-            return notice;
-        }catch (Exception e){
-            e.printStackTrace();
-            return null;
-        }finally {
-            if(session!=null){
-                try {
-                    session.close();
-                }catch (HibernateException e){
-                    e.printStackTrace();
-                }
-            }
-        }
+        return (Notice) getHibernateTemplate().find("from Notice where state =?",new Object[]{1}).get(0);
     }
 
     public Notice selectNoticeById(int id) {
-        Session session=null;
-        try{
-            session=HibernateHelper.getSession();
-            Notice notice=(Notice)session.createQuery("from Notice where state!=2 and noid="+id).uniqueResult();
-            return notice;
-        }catch (Exception e){
-            e.printStackTrace();
-            return null;
-        }finally {
-            if(session!=null){
-                try {
-                    session.close();
-                }catch (HibernateException e){
-                    e.printStackTrace();
-                }
-            }
-        }
+        return getHibernateTemplate().load(Notice.class,id);
     }
 }

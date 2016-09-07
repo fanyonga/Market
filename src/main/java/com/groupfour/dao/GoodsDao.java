@@ -15,25 +15,22 @@ public interface GoodsDao {
      * 插入一个新的商品
      *
      * @param goods
-     * @return
      */
-    boolean insertGoods(Goods goods);
+    void insertGoods(Goods goods);
 
     /**
      * 将商品置于过期
      *
      * @param goods
-     * @return
      */
-    boolean deleteUser(Goods goods);
+    void deleteUser(Goods goods);
 
     /**
      * 更新商品信息
      *
      * @param goods
-     * @return
      */
-    boolean updateGoods(Goods goods);
+    void updateGoods(Goods goods);
 
     /**
      * 根据商品类别来获取所有该类商品列表

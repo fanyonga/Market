@@ -5,122 +5,44 @@ import com.groupfour.entity.User;
 import com.groupfour.util.HibernateHelper;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+import org.springframework.stereotype.Repository;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 用户数据操作实现类
- */
-public class UserDaoImpl implements UserDao{
 
-    public boolean insertUser(User user) {
-        Session session=null;
-        try{
-            session= HibernateHelper.getSession();
-            session.beginTransaction();
-            session.save(user);
-            return true;
-        }catch (HibernateException e){
-            session.getTransaction().rollback();
-            e.printStackTrace();
-            return false;
-        }finally {
-            if(session!=null){
-                try {
-                    session.close();
-                }catch (HibernateException e){
-                    e.printStackTrace();
-                }
-            }
-        }
+@Repository("userDao")
+@Scope("prototype")
+public class UserDaoImpl extends HibernateDaoSupport implements UserDao{
+
+    //注入sessionFactory
+    @Resource
+    public void setMySessionFactory(SessionFactory sessionFactory){
+        super.setSessionFactory(sessionFactory);
     }
 
-    public boolean deleteUser(User user) {
-        Session session=null;
-        try{
-            session= HibernateHelper.getSession();
-            session.beginTransaction();
-            session.delete(user);
-            return true;
-        }catch (HibernateException e){
-            session.getTransaction().rollback();
-            e.printStackTrace();
-            return false;
-        }finally {
-            if(session!=null){
-                try {
-                    session.close();
-                }catch (HibernateException e){
-                    e.printStackTrace();
-                }
-            }
-        }
+    public void insertUser(User user) {
+       getHibernateTemplate().save(user);
     }
 
-    public boolean updateUser(User user) {
-        Session session=null;
-        try{
-            session= HibernateHelper.getSession();
-            session.beginTransaction();
-            session.update(user);
-            session.getTransaction().commit();
-            return true;
-        }catch (HibernateException e){
-            session.getTransaction().rollback();
-            e.printStackTrace();
-            return false;
-        }finally {
-            if(session!=null){
-                try {
-                    session.close();
-                }catch (HibernateException e){
-                    e.printStackTrace();
-                }
-            }
-        }
+    public void deleteUser(User user) {
+        getHibernateTemplate().delete(user);
+    }
+
+    public void updateUser(User user) {
+        getHibernateTemplate().update(user);
     }
 
     public List<User> selectUserList() {
-        List<User> users=new ArrayList<User>();
-        Session session=null;
-        try{
-            session= HibernateHelper.getSession();
-            users=session.createQuery("from User").list();
-            return users;
-        }catch (HibernateException e){
-            e.printStackTrace();
-            return null;
-        }finally {
-            if(session!=null){
-                try {
-                    session.close();
-                }catch (HibernateException e){
-                    e.printStackTrace();
-                }
-            }
-        }
+        List<User> list= (List<User>) getHibernateTemplate().find("from User ");
+        return list;
     }
 
-    public User selectUserByAccount(User user) {
-        Session session=null;
-        User user1=null;
-        try{
-            session= HibernateHelper.getSession();
-            user1=(User) session.createQuery("from User where account='"+user.getUsername()+"'and password='"
-                    +user.getPassword()+"'").uniqueResult();
-            return user1;
-        }catch (HibernateException e){
-            e.printStackTrace();
-            return null;
-        }finally {
-            if(session!=null){
-                try {
-                    session.close();
-                }catch (HibernateException e){
-                    e.printStackTrace();
-                }
-            }
-        }
+    public User selectUserByAccount(String account) {
+        return (User) getHibernateTemplate().find("from User where account=?",new Object[]{account}).get(0);
     }
 }

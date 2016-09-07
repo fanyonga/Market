@@ -96,7 +96,25 @@
                 return false;
             }
         }
-
+        $(document).ready(function () {
+            $("#reg").click(function () {
+                var param=$("#form").serialize();
+                $.ajax({
+                    url:'register.json',
+                    type:'post',
+                    data:param,
+                    datatype:'json',
+                    success:function (data) {
+                        alert(data.errCode+","+data.errMsg);
+                        if(data.errCode==-1){
+                            alert(data.errMsg);
+                        }else if(data.errCode==1){
+                            alert("注册成功")
+                        }
+                    }
+                })
+            });
+        })
     </script>
 </head>
 <body>
@@ -119,33 +137,33 @@
                 <p class="creating">为了更好的用户体验，您可以注册登录网站享受更多服务！</p>
 
                 <div class="sign-u">
-                    <form action="" method="post" name="formtest" onSubmit="return formtest_submit(this)">
+                    <form action="" method="post" name="formtest"  id="form">
                         <table border="0" align="center">
                             <tr>
                                 <td class="sign-up1">账&nbsp;&nbsp;号：</td>
                                 <td class="sign-up2">
-                                    <input type="text" onBlur="yzusername(this.value)" required/>
+                                    <input type="text" name="account" onBlur="yzusername(this.value)" required/>
                                     <span id="isusername" class="check">账号为6~18个字符</span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="sign-up1">密&nbsp;&nbsp;码：</td>
                                 <td class="sign-up2">
-                                    <input type="password" onBlur="yzpwd1(this.value)" required/>
+                                    <input type="password" name="password" onBlur="yzpwd1(this.value)" required/>
                                     <span id="ispassword" class="check">密码为6~16个字符可由英文、数字和符号组成</span>
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="sign-up1">确认密码：</td>
-                                <td class="sign-up2">
-                                    <input type="password" onBlur="yzpwd2(pwd1.value,this.value)" required/>
-                                    <span id="issure" class="check">请再次输入密码，两次密码必须一致</span>
-                                </td>
-                            </tr>
+                            <%--<tr>--%>
+                                <%--<td class="sign-up1">确认密码：</td>--%>
+                                <%--<td class="sign-up2">--%>
+                                    <%--<input type="password" onBlur="yzpwd2(pwd1.value,this.value)" required/>--%>
+                                    <%--<span id="issure" class="check">请再次输入密码，两次密码必须一致</span>--%>
+                                <%--</td>--%>
+                            <%--</tr>--%>
                             <tr>
                                 <td class="sign-up1">邮&nbsp;&nbsp;箱：</td>
                                 <td class="sign-up2">
-                                    <input type="email" required onBlur="yzmail(this.value)"/>
+                                    <input type="email" name="email" required onBlur="yzmail(this.value)"/>
                                     <span id="ismail" class="check">邮箱必须合法</span>
                                 </td>
                             </tr>
@@ -158,8 +176,8 @@
                                 <td>&nbsp;</td>
                             </tr>
                             <tr>
-                                <td><input type="submit" value="立即注册"></td>
-                                <td class="sub_home"><p>去 &nbsp;<a href="login.html">登录</a></p></td>
+                                <td><input id="reg" type="button" value="立即注册"></td>
+                                <td class="sub_home"><p>去 &nbsp;<a href="login.jsp">登录</a></p></td>
 
                             </tr>
                         </table>

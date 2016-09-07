@@ -6,97 +6,38 @@ import com.groupfour.entity.Goods;
 import com.groupfour.util.HibernateHelper;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+import org.springframework.stereotype.Repository;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by fanyong on 16-9-7.
- */
-public class EvaluatesDaoImpl implements EvaluatesDao{
-    public boolean insertEvaluates(Evaluates evaluates) {
-        Session session=null;
-        try {
-            session= HibernateHelper.getSession();
-            session.beginTransaction();
-            session.save(evaluates);
-            session.getTransaction().commit();
-            return true;
-        }catch (Exception e){
-            session.getTransaction().rollback();
-            e.printStackTrace();
-            return false;
-        }finally {
-            if(session!=null){
-                try {
-                    session.close();
-                }catch (HibernateException e){
-                    e.printStackTrace();
-                }
-            }
-        }
+@Repository("evaluatesDao")
+@Scope("prototype")
+public class EvaluatesDaoImpl extends HibernateDaoSupport implements EvaluatesDao{
+
+    //注入sessionFactory
+    @Resource
+    public void setMySessionFactory(SessionFactory sessionFactory){
+        super.setSessionFactory(sessionFactory);
+    }
+    public void insertEvaluates(Evaluates evaluates) {
+        getHibernateTemplate().save(evaluates);
     }
 
-    public boolean deleteEvaluates(Evaluates evaluates) {
-        Session session=null;
-        try {
-            session= HibernateHelper.getSession();
-            session.beginTransaction();
-            session.delete(evaluates);
-            session.getTransaction().commit();
-            return true;
-        }catch (Exception e){
-            session.getTransaction().rollback();
-            e.printStackTrace();
-            return false;
-        }finally {
-            if(session!=null){
-                try {
-                    session.close();
-                }catch (HibernateException e){
-                    e.printStackTrace();
-                }
-            }
-        }
+    public void deleteEvaluates(Evaluates evaluates) {
+        getHibernateTemplate().update(evaluates);
     }
 
     public List<Evaluates> selectEvaluatesListByGoods(Goods goods) {
-        Session session=null;
-        List<Evaluates> list=new ArrayList<Evaluates>();
-        try {
-            session= HibernateHelper.getSession();
-            list=session.createQuery("from Evaluates where goods.id="+goods.getGid()+"").list();
-            return list;
-        }catch (Exception e){
-            e.printStackTrace();
-            return null;
-        }finally {
-            if(session!=null){
-                try {
-                    session.close();
-                }catch (HibernateException e){
-                    e.printStackTrace();
-                }
-            }
-        }
+        List<Evaluates> list=(List<Evaluates>)getHibernateTemplate().find("from Evaluates  where goods.gid=?",new Object[]{goods.getGid()});
+        return list;
     }
 
     public Evaluates selectEvaluatesById(int id) {
-        Session session=null;
-        try{
-            session= HibernateHelper.getSession();
-            return session.load(Evaluates.class,id);
-        }catch (Exception e){
-            e.printStackTrace();
-            return null;
-        }finally {
-            if(session!=null){
-                try {
-                    session.close();
-                }catch (HibernateException e){
-                    e.printStackTrace();
-                }
-            }
-        }
+       return getHibernateTemplate().load(Evaluates.class,id);
     }
 }

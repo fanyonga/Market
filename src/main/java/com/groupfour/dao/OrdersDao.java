@@ -14,17 +14,15 @@ public interface OrdersDao {
      * 插入一个新的订单
      *
      * @param orders
-     * @return
      */
-    boolean inserOrders(Orders orders);
+    void inserOrders(Orders orders);
 
     /**
      * 更新一个订单的状态
      *
      * @param orders
-     * @return
      */
-    boolean updateOrders(Orders orders);
+    void updateOrders(Orders orders);
 
     /**
      * 根据购买人来获得其所有的订单

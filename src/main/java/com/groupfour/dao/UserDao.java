@@ -13,24 +13,22 @@ public interface UserDao {
      * 插入一个新的用户
      *
      * @param user
-     * @return
      */
-    boolean insertUser(User user);
+    void insertUser(User user);
 
     /**
      * 删除一个已有的用户
+     *
      * @param user
-     * @return
      */
-    boolean deleteUser(User user);
+    void deleteUser(User user);
 
     /**
      * 更新用户信息
      *
      * @param user
-     * @return
      */
-    boolean updateUser(User user);
+    void updateUser(User user);
 
     /**
      * 获得用户列表
@@ -40,9 +38,9 @@ public interface UserDao {
     List<User> selectUserList();
 
     /**
-     * 验证用户的登陆信息（账号和密码）并获取一个用户
-     * @param user 非空登陆成功
+     * 获取指定账号名的用户
+     * @param account
      * @return
      */
-    User selectUserByAccount(User user);
+    User selectUserByAccount(String account);
 }

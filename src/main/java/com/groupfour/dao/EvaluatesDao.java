@@ -15,17 +15,15 @@ public interface EvaluatesDao {
      * 插入一个新的评价
      *
      * @param evaluates
-     * @return
      */
-    boolean insertEvaluates(Evaluates evaluates);
+    void insertEvaluates(Evaluates evaluates);
 
     /**
      * 删除一个已有的评价
      *
      * @param evaluates
-     * @return
      */
-    boolean deleteEvaluates(Evaluates evaluates);
+    void deleteEvaluates(Evaluates evaluates);
 
 //不允许用户更新评价
 //    /**
