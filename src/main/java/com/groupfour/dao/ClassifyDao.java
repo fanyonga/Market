@@ -1,9 +1,6 @@
 package com.groupfour.dao;
 
 import com.groupfour.entity.Classify;
-import com.groupfour.entity.User;
-
-import java.util.List;
 
 /**
  *分类数据操作接口
@@ -29,4 +26,12 @@ public interface ClassifyDao {
      * 修改一个分类的名称
      */
     boolean updateClassifyOfCategory(Classify classify);
+
+    /**
+     * 根据分类id来获取分类信息
+     *
+     * @param id
+     * @return
+     */
+    Classify selectClassifyById(int id);
 }

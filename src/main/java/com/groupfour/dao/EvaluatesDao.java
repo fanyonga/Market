@@ -41,5 +41,13 @@ public interface EvaluatesDao {
      * @param goods
      * @return
      */
-    User selectEvaluatesListByGoods(Goods goods);
+    List<Evaluates> selectEvaluatesListByGoods(Goods goods);
+
+    /**
+     * 根据评价id来获取评价信息
+     *
+     * @param id
+     * @return
+     */
+    Evaluates selectEvaluatesById(int id);
 }

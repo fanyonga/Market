@@ -49,7 +49,7 @@ public interface GoodsDao {
      * @param gname
      * @return 商品列表
      */
-    List<Goods> selectUserByAccount(String gname);
+    List<Goods> selectGoodsListByName(String gname);
 
     /**
      * 根据用户来获取所有售卖的商品信息
@@ -57,5 +57,13 @@ public interface GoodsDao {
      * @param user
      * @return 商品列表
      */
-    List<Goods> selectUserByUser(User user);
+    List<Goods> selectGoodsListByUser(User user);
+
+    /**
+     * 根据商品id来获取评价信息
+     *
+     * @param id
+     * @return
+     */
+    Goods selectGoodsById(int id);
 }

@@ -1,6 +1,8 @@
 package com.groupfour.dao.impl;
 
-import com.groupfour.dao.UserDao;
+import com.groupfour.dao.GoodsDao;
+import com.groupfour.entity.Classify;
+import com.groupfour.entity.Goods;
 import com.groupfour.entity.User;
 import com.groupfour.util.HibernateHelper;
 import org.hibernate.HibernateException;
@@ -10,63 +12,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 用户数据操作实现类
+ * Created by fanyong on 16-9-7.
  */
-public class UserDaoImpl implements UserDao{
-
-    public boolean insertUser(User user) {
+public class GoodsDaoImpl implements GoodsDao{
+    public boolean insertGoods(Goods goods) {
         Session session=null;
-        try{
+        try {
             session= HibernateHelper.getSession();
             session.beginTransaction();
-            session.save(user);
-            return true;
-        }catch (HibernateException e){
-            session.getTransaction().rollback();
-            e.printStackTrace();
-            return false;
-        }finally {
-            if(session!=null){
-                try {
-                    session.close();
-                }catch (HibernateException e){
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
-    public boolean deleteUser(User user) {
-        Session session=null;
-        try{
-            session= HibernateHelper.getSession();
-            session.beginTransaction();
-            session.delete(user);
-            return true;
-        }catch (HibernateException e){
-            session.getTransaction().rollback();
-            e.printStackTrace();
-            return false;
-        }finally {
-            if(session!=null){
-                try {
-                    session.close();
-                }catch (HibernateException e){
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
-    public boolean updateUser(User user) {
-        Session session=null;
-        try{
-            session= HibernateHelper.getSession();
-            session.beginTransaction();
-            session.update(user);
+            session.save(goods);
             session.getTransaction().commit();
             return true;
-        }catch (HibernateException e){
+        }catch (Exception e){
             session.getTransaction().rollback();
             e.printStackTrace();
             return false;
@@ -81,14 +38,60 @@ public class UserDaoImpl implements UserDao{
         }
     }
 
-    public List<User> selectUserList() {
-        List<User> users=new ArrayList<User>();
+    public boolean deleteUser(Goods goods) {
+        Session session=null;
+        try {
+            session= HibernateHelper.getSession();
+            session.beginTransaction();
+            session.delete(goods);
+            session.getTransaction().commit();
+            return true;
+        }catch (Exception e){
+            session.getTransaction().rollback();
+            e.printStackTrace();
+            return false;
+        }finally {
+            if(session!=null){
+                try {
+                    session.close();
+                }catch (HibernateException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public boolean updateGoods(Goods goods) {
+        Session session=null;
+        try {
+            session= HibernateHelper.getSession();
+            session.beginTransaction();
+            session.update(goods);
+            session.getTransaction().commit();
+            return true;
+        }catch (Exception e){
+            session.getTransaction().rollback();
+            e.printStackTrace();
+            return false;
+        }finally {
+            if(session!=null){
+                try {
+                    session.close();
+                }catch (HibernateException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public List<Goods> selectGoodsListByClassify(Classify classify) {
+        List<Goods> list=new ArrayList<Goods>();
         Session session=null;
         try{
-            session= HibernateHelper.getSession();
-            users=session.createQuery("from User").list();
-            return users;
-        }catch (HibernateException e){
+            session=HibernateHelper.getSession();
+            list=session.createQuery("from Goods where classify.id="+classify.getCid()).list();
+            return list;
+        }catch (Exception e){
             e.printStackTrace();
             return null;
         }finally {
@@ -102,15 +105,54 @@ public class UserDaoImpl implements UserDao{
         }
     }
 
-    public User selectUserByAccount(User user) {
+    public List<Goods> selectGoodsListByName(String gname) {
+        List<Goods> list=new ArrayList<Goods>();
         Session session=null;
-        User user1=null;
+        try{
+            session=HibernateHelper.getSession();
+            list=session.createQuery("from Goods where gname like '%"+gname+"%'").list();
+            return list;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }finally {
+            if(session!=null){
+                try {
+                    session.close();
+                }catch (HibernateException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public List<Goods> selectGoodsListByUser(User user) {
+        List<Goods> list=new ArrayList<Goods>();
+        Session session=null;
+        try{
+            session=HibernateHelper.getSession();
+            list=session.createQuery("from Goods where user.id="+user.getUid()).list();
+            return list;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }finally {
+            if(session!=null){
+                try {
+                    session.close();
+                }catch (HibernateException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public Goods selectGoodsById(int id) {
+        Session session=null;
         try{
             session= HibernateHelper.getSession();
-            user1=(User) session.createQuery("from User where account='"+user.getUsername()+"'and password='"
-                    +user.getPassword()+"'").uniqueResult();
-            return user1;
-        }catch (HibernateException e){
+            return session.load(Goods.class,id);
+        }catch (Exception e){
             e.printStackTrace();
             return null;
         }finally {

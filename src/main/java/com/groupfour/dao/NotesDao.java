@@ -42,4 +42,12 @@ public interface NotesDao {
      * @return
      */
     List<Notes> selectNotesList(Goods goods);
+
+    /**
+     * 根据留言id来获取留言信息
+     *
+     * @param id
+     * @return
+     */
+    Notes selectNotesById(int id);
 }

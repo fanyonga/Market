@@ -1,6 +1,5 @@
 package com.groupfour.dao;
 
-import com.groupfour.entity.Notes;
 import com.groupfour.entity.Notice;
 
 import java.util.List;
@@ -21,10 +20,10 @@ public interface NoticeDao {
     /**
      * 更新一个已有的公告信息（可以让它过期无效）
      *
-     * @param notes
+     * @param notice
      * @return
      */
-    boolean updateNotice(Notes notes);
+    boolean updateNotice(Notice notice);
 
     /**
      * 获得公告列表，并排序
@@ -32,12 +31,20 @@ public interface NoticeDao {
      * @param option 0-选择所有公告，1-选择所有有效的公告
      * @return
      */
-    List<Notes> selectNotesList(int option);
+    List<Notice> selectNoticeList(int option);
 
     /**
      * 获得置顶的公告信息
      *
      * @return
      */
-    Notes getTopNotice();
+    Notice selectTopNotice();
+
+    /**
+     * 根据留言id来获取留言信息
+     *
+     * @param id
+     * @return
+     */
+    Notice selectNoticeById(int id);
 }

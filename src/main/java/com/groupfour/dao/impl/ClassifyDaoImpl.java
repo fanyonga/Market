@@ -1,72 +1,24 @@
 package com.groupfour.dao.impl;
 
-import com.groupfour.dao.UserDao;
-import com.groupfour.entity.User;
+import com.groupfour.dao.ClassifyDao;
+import com.groupfour.entity.Classify;
 import com.groupfour.util.HibernateHelper;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * 用户数据操作实现类
+ * Created by fanyong on 16-9-7.
  */
-public class UserDaoImpl implements UserDao{
-
-    public boolean insertUser(User user) {
+public class ClassifyDaoImpl implements ClassifyDao {
+    public boolean insertClassify(Classify classify) {
         Session session=null;
         try{
             session= HibernateHelper.getSession();
             session.beginTransaction();
-            session.save(user);
-            return true;
-        }catch (HibernateException e){
-            session.getTransaction().rollback();
-            e.printStackTrace();
-            return false;
-        }finally {
-            if(session!=null){
-                try {
-                    session.close();
-                }catch (HibernateException e){
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
-    public boolean deleteUser(User user) {
-        Session session=null;
-        try{
-            session= HibernateHelper.getSession();
-            session.beginTransaction();
-            session.delete(user);
-            return true;
-        }catch (HibernateException e){
-            session.getTransaction().rollback();
-            e.printStackTrace();
-            return false;
-        }finally {
-            if(session!=null){
-                try {
-                    session.close();
-                }catch (HibernateException e){
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
-    public boolean updateUser(User user) {
-        Session session=null;
-        try{
-            session= HibernateHelper.getSession();
-            session.beginTransaction();
-            session.update(user);
+            session.save(classify);
             session.getTransaction().commit();
             return true;
-        }catch (HibernateException e){
+        }catch (Exception e){
             session.getTransaction().rollback();
             e.printStackTrace();
             return false;
@@ -81,16 +33,18 @@ public class UserDaoImpl implements UserDao{
         }
     }
 
-    public List<User> selectUserList() {
-        List<User> users=new ArrayList<User>();
+    public boolean deleteClassify(Classify classify) {
         Session session=null;
         try{
             session= HibernateHelper.getSession();
-            users=session.createQuery("from User").list();
-            return users;
-        }catch (HibernateException e){
+            session.beginTransaction();
+            session.delete(classify);
+            session.getTransaction().commit();
+            return true;
+        }catch (Exception e){
+            session.getTransaction().rollback();
             e.printStackTrace();
-            return null;
+            return false;
         }finally {
             if(session!=null){
                 try {
@@ -102,15 +56,35 @@ public class UserDaoImpl implements UserDao{
         }
     }
 
-    public User selectUserByAccount(User user) {
+    public boolean updateClassifyOfCategory(Classify classify) {
         Session session=null;
-        User user1=null;
         try{
             session= HibernateHelper.getSession();
-            user1=(User) session.createQuery("from User where account='"+user.getUsername()+"'and password='"
-                    +user.getPassword()+"'").uniqueResult();
-            return user1;
-        }catch (HibernateException e){
+            session.beginTransaction();
+            session.update(classify);
+            session.getTransaction().commit();
+            return true;
+        }catch (Exception e){
+            session.getTransaction().rollback();
+            e.printStackTrace();
+            return false;
+        }finally {
+            if(session!=null){
+                try {
+                    session.close();
+                }catch (HibernateException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public Classify selectClassifyById(int id) {
+        Session session=null;
+        try{
+            session= HibernateHelper.getSession();
+            return session.load(Classify.class,id);
+        }catch (Exception e){
             e.printStackTrace();
             return null;
         }finally {

@@ -48,5 +48,5 @@ public interface OrdersDao {
      * @param id
      * @return
      */
-    Orders getOrdersById(int id);
+    Orders selectOrdersById(int id);
 }

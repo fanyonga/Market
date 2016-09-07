@@ -1,7 +1,8 @@
 package com.groupfour.dao.impl;
 
-import com.groupfour.dao.UserDao;
-import com.groupfour.entity.User;
+import com.groupfour.dao.NotesDao;
+import com.groupfour.entity.Goods;
+import com.groupfour.entity.Notes;
 import com.groupfour.util.HibernateHelper;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -10,63 +11,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 用户数据操作实现类
+ * Created by fanyong on 16-9-7.
  */
-public class UserDaoImpl implements UserDao{
-
-    public boolean insertUser(User user) {
+public class NotesDaoImpl implements NotesDao{
+    public boolean insertNotes(Notes notes) {
         Session session=null;
-        try{
+        try {
             session= HibernateHelper.getSession();
             session.beginTransaction();
-            session.save(user);
-            return true;
-        }catch (HibernateException e){
-            session.getTransaction().rollback();
-            e.printStackTrace();
-            return false;
-        }finally {
-            if(session!=null){
-                try {
-                    session.close();
-                }catch (HibernateException e){
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
-    public boolean deleteUser(User user) {
-        Session session=null;
-        try{
-            session= HibernateHelper.getSession();
-            session.beginTransaction();
-            session.delete(user);
-            return true;
-        }catch (HibernateException e){
-            session.getTransaction().rollback();
-            e.printStackTrace();
-            return false;
-        }finally {
-            if(session!=null){
-                try {
-                    session.close();
-                }catch (HibernateException e){
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
-    public boolean updateUser(User user) {
-        Session session=null;
-        try{
-            session= HibernateHelper.getSession();
-            session.beginTransaction();
-            session.update(user);
+            session.save(notes);
             session.getTransaction().commit();
             return true;
-        }catch (HibernateException e){
+        }catch (Exception e){
             session.getTransaction().rollback();
             e.printStackTrace();
             return false;
@@ -81,14 +37,37 @@ public class UserDaoImpl implements UserDao{
         }
     }
 
-    public List<User> selectUserList() {
-        List<User> users=new ArrayList<User>();
+    public boolean deleteNotes(Notes notes) {
+        Session session=null;
+        try {
+            session= HibernateHelper.getSession();
+            session.beginTransaction();
+            session.delete(notes);
+            session.getTransaction().commit();
+            return true;
+        }catch (Exception e){
+            session.getTransaction().rollback();
+            e.printStackTrace();
+            return false;
+        }finally {
+            if(session!=null){
+                try {
+                    session.close();
+                }catch (HibernateException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public List<Notes> selectNotesList(Goods goods) {
+        List<Notes> list=new ArrayList<Notes>();
         Session session=null;
         try{
-            session= HibernateHelper.getSession();
-            users=session.createQuery("from User").list();
-            return users;
-        }catch (HibernateException e){
+            session=HibernateHelper.getSession();
+            list=session.createQuery("from Notes where goods.id="+goods.getGid()).list();
+            return list;
+        }catch (Exception e){
             e.printStackTrace();
             return null;
         }finally {
@@ -102,15 +81,12 @@ public class UserDaoImpl implements UserDao{
         }
     }
 
-    public User selectUserByAccount(User user) {
+    public Notes selectNotesById(int id) {
         Session session=null;
-        User user1=null;
         try{
             session= HibernateHelper.getSession();
-            user1=(User) session.createQuery("from User where account='"+user.getUsername()+"'and password='"
-                    +user.getPassword()+"'").uniqueResult();
-            return user1;
-        }catch (HibernateException e){
+            return session.load(Notes.class,id);
+        }catch (Exception e){
             e.printStackTrace();
             return null;
         }finally {
