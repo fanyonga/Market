@@ -34,7 +34,7 @@
             <column name="area" sql-type="float" precision="-1" />
         </property>
         <property name="picture">
-            <column name="picture" sql-type="int(11)" />
+            <column name="picture" sql-type="varchar(256)" />
         </property>
         <property name="content">
             <column name="content" sql-type="char(20)" length="20" />

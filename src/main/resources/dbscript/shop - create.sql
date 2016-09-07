@@ -4,19 +4,19 @@
 /*==============================================================*/
 
 
-drop table if exists notice;
-
-drop table if exists classify;
-
 drop table if exists evaluates;
-
-drop table if exists goods;
 
 drop table if exists notes;
 
 drop table if exists orders;
 
+drop table if exists goods;
+
+drop table if exists notice;
+
 drop table if exists user;
+
+drop table if exists classify;
 
 /*==============================================================*/
 /* table: notice                                                */
@@ -72,7 +72,7 @@ create table goods
    price                float comment '商品价格',
    con                  int comment '成色',
    area                 float comment '所在区域',
-   picture              int comment '商品图片',
+   picture              varchar(256) comment '商品图片',
    content              char(20) comment '联系人',
    phone                char(20) comment '联系电话',
    descript             text comment '商品描述',

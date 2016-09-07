@@ -16,7 +16,7 @@ public class Goods {
     private Double price;//商品价格
     private Integer con;//成色
     private Double area;//所在区域
-    private Integer picture;//商品图片
+    private String picture;//商品图片地址
     private String content;//联系人
     private String phone;//联系电话
     private String descript;//商品描述
@@ -97,11 +97,11 @@ public class Goods {
         this.area = area;
     }
 
-    public Integer getPicture() {
+    public String getPicture() {
         return picture;
     }
 
-    public void setPicture(Integer picture) {
+    public void setPicture(String picture) {
         this.picture = picture;
     }
 
@@ -159,51 +159,5 @@ public class Goods {
 
     public void setCtime(Time ctime) {
         this.ctime = ctime;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Goods goods = (Goods) o;
-
-        if (gid != goods.gid) return false;
-        if (category != null ? !category.equals(goods.category) : goods.category != null) return false;
-        if (gname != null ? !gname.equals(goods.gname) : goods.gname != null) return false;
-        if (parea != null ? !parea.equals(goods.parea) : goods.parea != null) return false;
-        if (price != null ? !price.equals(goods.price) : goods.price != null) return false;
-        if (con != null ? !con.equals(goods.con) : goods.con != null) return false;
-        if (area != null ? !area.equals(goods.area) : goods.area != null) return false;
-        if (picture != null ? !picture.equals(goods.picture) : goods.picture != null) return false;
-        if (content != null ? !content.equals(goods.content) : goods.content != null) return false;
-        if (phone != null ? !phone.equals(goods.phone) : goods.phone != null) return false;
-        if (descript != null ? !descript.equals(goods.descript) : goods.descript != null) return false;
-        if (rtime != null ? !rtime.equals(goods.rtime) : goods.rtime != null) return false;
-        if (stock != null ? !stock.equals(goods.stock) : goods.stock != null) return false;
-        if (state != null ? !state.equals(goods.state) : goods.state != null) return false;
-        if (ctime != null ? !ctime.equals(goods.ctime) : goods.ctime != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = gid;
-        result = 31 * result + (category != null ? category.hashCode() : 0);
-        result = 31 * result + (gname != null ? gname.hashCode() : 0);
-        result = 31 * result + (parea != null ? parea.hashCode() : 0);
-        result = 31 * result + (price != null ? price.hashCode() : 0);
-        result = 31 * result + (con != null ? con.hashCode() : 0);
-        result = 31 * result + (area != null ? area.hashCode() : 0);
-        result = 31 * result + (picture != null ? picture.hashCode() : 0);
-        result = 31 * result + (content != null ? content.hashCode() : 0);
-        result = 31 * result + (phone != null ? phone.hashCode() : 0);
-        result = 31 * result + (descript != null ? descript.hashCode() : 0);
-        result = 31 * result + (rtime != null ? rtime.hashCode() : 0);
-        result = 31 * result + (stock != null ? stock.hashCode() : 0);
-        result = 31 * result + (state != null ? state.hashCode() : 0);
-        result = 31 * result + (ctime != null ? ctime.hashCode() : 0);
-        return result;
     }
 }
