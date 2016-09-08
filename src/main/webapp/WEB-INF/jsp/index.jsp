@@ -67,11 +67,11 @@
 <div class="header">
     <div class="container">
         <div class="logo">
-            <a href="index.jsp"><span>二次</span>购</a>
+            <a href="index.html"><span>二次</span>购</a>
         </div>
         <div class="header-right">
-            <a class="login" href="login">登录/</a>
-            <a class="out" href="index">退出</a>
+            <a class="login" href="login.html">登录/</a>
+            <a class="out" href="">退出</a>
         </div>
     </div>
 

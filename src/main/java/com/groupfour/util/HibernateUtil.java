@@ -7,7 +7,7 @@ import org.hibernate.cfg.Configuration;
 /**
  * Hibernate功能工具类
  */
-public class HibernateHelper {
+public class HibernateUtil {
 
     private static SessionFactory sessionFactory=null;
 

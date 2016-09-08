@@ -4,16 +4,12 @@ import com.groupfour.dao.GoodsDao;
 import com.groupfour.entity.Classify;
 import com.groupfour.entity.Goods;
 import com.groupfour.entity.User;
-import com.groupfour.util.HibernateHelper;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository("goodsDao")

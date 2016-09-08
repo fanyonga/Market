@@ -34,20 +34,6 @@
 
     <!--注册验证-->
     <script>
-        function formtest_submit(sender)
-        {
-            var usernameOK=yzusername(sender.username.value);  //在表单中元素可直接通过表单寻找元素id或name获取其值
-            var password1OK=yzpwd1(sender.pwd1.value);
-            var password2OK=yzpwd2(sender.pwd1.value,sender.pwd2.value);
-            var dateOK=yzdate(sender.date.value);
-            var mailOK=yzmail(sender.mail.value);
-            var istrue=usernameOK&&password1OK&&password2OK&&mailOK;
-            if(istrue){
-                alert("恭喜你！注册成功");
-                return false;
-            }
-            return false;
-        }
         //账号为6~18个字符
         function yzusername(username)
         {
@@ -100,7 +86,7 @@
             $("#reg").click(function () {
                 var param=$("#form").serialize();
                 $.ajax({
-                    url:'register.json',
+                    url:'<%=path%>/register.json',
                     type:'post',
                     data:param,
                     datatype:'json',

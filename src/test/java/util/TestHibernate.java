@@ -1,6 +1,6 @@
 package util;
 
-import com.groupfour.util.HibernateHelper;
+import com.groupfour.util.HibernateUtil;
 import org.junit.Test;
 
 /**
@@ -10,7 +10,7 @@ public class TestHibernate {
     @Test
     public void testGetSession()
     {
-        if(HibernateHelper.getSession()!=null){
+        if(HibernateUtil.getSession()!=null){
             System.out.println("获得会话正常");
         }
     }

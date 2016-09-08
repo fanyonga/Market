@@ -2,16 +2,12 @@ package com.groupfour.dao.impl;
 
 import com.groupfour.dao.UserDao;
 import com.groupfour.entity.User;
-import com.groupfour.util.HibernateHelper;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -43,6 +39,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao{
     }
 
     public User selectUserByAccount(String account) {
-        return (User) getHibernateTemplate().find("from User where account=?",new Object[]{account}).get(0);
+        List<User> list= (List<User>) getHibernateTemplate().find("from User where account=?",new Object[]{account});
+        return list.size()==0?null:list.get(0);
     }
 }

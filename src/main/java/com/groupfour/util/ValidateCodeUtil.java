@@ -16,7 +16,7 @@ import com.sun.image.codec.jpeg.JPEGImageEncoder;
 /**
  * 验证码工具类
  */
-public class ValidateCode {
+public class ValidateCodeUtil {
 
 	/**
 	 *获取一串指定长度的从0-9a-zA-Z的字符串
@@ -100,7 +100,7 @@ public class ValidateCode {
      */
     public static void main(String[] args) {
         try {
-            String code=ValidateCode.outFile("D:\\002.jpg",6);
+            String code= ValidateCodeUtil.outFile("D:\\002.jpg",6);
             System.out.println(code);
         } catch (Exception e) {
             e.printStackTrace();

@@ -2,13 +2,9 @@ package com.groupfour.dao.impl;
 
 import com.groupfour.dao.ClassifyDao;
 import com.groupfour.entity.Classify;
-import com.groupfour.util.HibernateHelper;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;

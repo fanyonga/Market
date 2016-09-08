@@ -37,7 +37,7 @@
 <div class="header">
     <div class="container">
         <div class="logo">
-            <a href="index.html"><span>二次</span>购</a>
+            <a href="/index.html"><span>二次</span>购</a>
         </div>
 
     </div>
@@ -52,10 +52,10 @@
                     <h1>用户登录</h1>
                 </div>
                 <div class="signin">
-                    <form class="form-group">
+                    <form class="form-group" action="\loginJudge" method="post">
                         <div class="log-input">
                             <div class="log-input-left">
-                                <input type="text" class="user form-control" value="账号" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '账号';}"/>
+                                <input type="text" class="user form-control" name="account" value="账号" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '账号';}"/>
                             </div>
 
                             <div class="clearfix"> </div>
@@ -63,7 +63,7 @@
 
                         <div class="log-input">
                             <div class="log-input-left">
-                                <input type="password" class="lock form-control" value="密码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '密码';}"/>
+                                <input type="password" class="lock form-control" name="password" value="密码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '密码';}"/>
                             </div>
 
                             <div class="clearfix"> </div>

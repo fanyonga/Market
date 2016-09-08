@@ -33,8 +33,8 @@
   		</property>
   		<property name="hibernateProperties">
   			<props>
-  				<prop key="hbm2ddl.auto">create</prop>
-  				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+  				<prop key="hbm2ddl.auto">update</prop>
+  				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
   				<prop key="hibernate.show_sql">true</prop>
   				<prop key="hibernate.format_sql">true</prop>
   			</props>
@@ -53,6 +53,7 @@
 			<tx:method name="save*" propagation="REQUIRED"/>
 			<tx:method name="update*" propagation="REQUIRED"/>
 			<tx:method name="delete*" propagation="REQUIRED"/>
+			<tx:method name="*"/>
 		</tx:attributes>
 	</tx:advice>
 
