@@ -162,6 +162,6 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>com.group4</finalName>
+        <finalName>group4</finalName>
     </build>
 </project>

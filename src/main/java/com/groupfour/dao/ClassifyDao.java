@@ -3,7 +3,7 @@ package com.groupfour.dao;
 import com.groupfour.entity.Classify;
 
 /**
- *分类数据操作接口
+ * 分类数据操作接口
  */
 public interface ClassifyDao {
 

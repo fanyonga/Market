@@ -4,7 +4,6 @@
     String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,13 +16,13 @@
     <link rel="stylesheet" href="<%=basePath%>static/css/flexslider.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="<%=basePath%>static/css/font-awesome.min.css" />
 
-    <!-- for-mobile-apps
+    <!-- for-mobile-apps-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-    Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    //for-mobile-apps -->
+
 
     <!--fonts
     <!--<link href='http://fonts.useso.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
@@ -60,7 +59,6 @@
             });
         });
     </script>
-
 </head>
 <body>
 <!--header-->
@@ -71,7 +69,7 @@
         </div>
         <div class="header-right">
             <a class="login" href="login.html">登录/</a>
-            <a class="out" href="">退出</a>
+            <a class="out" href="#">退出</a>
         </div>
     </div>
 

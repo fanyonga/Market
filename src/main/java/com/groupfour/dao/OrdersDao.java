@@ -30,7 +30,15 @@ public interface OrdersDao {
      * @param user
      * @return
      */
-    List<Orders> getOrdersListByUser(User user);
+    List<Orders> getOrdersListByBuyer(User user);
+
+    /**
+     * 根据卖家来获得其所有受到的订单
+     *
+     * @param user
+     * @return
+     */
+    List<Orders> getOrdersListBySeller(User user);
 
     /**
      * 根据商品来获得其所有的订单

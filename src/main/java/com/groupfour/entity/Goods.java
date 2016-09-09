@@ -22,7 +22,7 @@ public class Goods {
     private String descript;//商品描述
     private Time rtime;//发布时间
     private Integer stock;//商品存量
-    private String state;//状态
+    private String state;//状态 0-发布中，1-待审核，2-已过期
     private Time ctime;//创建时间
 
     public int getGid() {

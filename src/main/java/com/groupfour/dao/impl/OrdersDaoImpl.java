@@ -30,11 +30,6 @@ public class OrdersDaoImpl extends HibernateDaoSupport implements OrdersDao{
         getHibernateTemplate().update(orders);
     }
 
-    public List<Orders> getOrdersListByUser(User user) {
-        List<Orders> list= (List<Orders>) getHibernateTemplate().find("from Orders where user.uid=?",new Object[]{user.getUid()});
-        return list;
-    }
-
     public List<Orders> getOrdersListByGoods(Goods goods) {
         List<Orders> list= (List<Orders>) getHibernateTemplate().find("from Orders where goods.gid=?",new Object[]{goods.getGid()});
         return list;
@@ -42,5 +37,15 @@ public class OrdersDaoImpl extends HibernateDaoSupport implements OrdersDao{
 
     public Orders selectOrdersById(int id) {
         return  getHibernateTemplate().load(Orders.class,id);
+    }
+
+    public List<Orders> getOrdersListByBuyer(User user) {
+        List<Orders> list= (List<Orders>) getHibernateTemplate().find("from Orders where user.uid=?",new Object[]{user.getUid()});
+        return list;
+    }
+
+    public List<Orders> getOrdersListBySeller(User user) {
+        List<Orders> list= (List<Orders>) getHibernateTemplate().find("from Orders o where exists (select gid from Goods  g where g.user.uid=? and o.goods.gid=gid) order by  time",new Object[]{user.getUid()});
+        return list;
     }
 }

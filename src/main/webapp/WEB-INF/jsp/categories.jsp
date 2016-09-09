@@ -4,24 +4,25 @@
     String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Categories</title>
+    <title>Single</title>
     <meta charset="utf-8">
 
     <!--css-->
     <link rel="stylesheet" href="<%=basePath%>static/css/bootstrap.min.css">
     <link href="<%=basePath%>static/css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>static/css/easy-responsive-tabs.css " />
+    <link rel="stylesheet" href="<%=basePath%>static/css/flexslider.css" type="text/css" media="screen" />
 
-    <!-- for-mobile-apps
+    <!--for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-    Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    //for-mobile-apps -->
+
 
     <!--fonts
     <link href='http://fonts.useso.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
@@ -31,23 +32,21 @@
     <!-- js -->
     <script type="text/javascript" src="<%=basePath%>static/js/jquery.min.js"></script>
     <script src="<%=basePath%>static/js/bootstrap.min.js"></script>
-    <script src="<%=basePath%>static/js/easyResponsiveTabs.js"></script>
+    <script type="text/javascript" src="<%=basePath%>static/js/jquery.flexslider.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                controlNav: "thumbnails"
+            });
+        });
+    </script>
+
     <script type="text/javascript">
         $(document).ready(function() {
-            //Vertical Tab
-            $('#parentVerticalTab').easyResponsiveTabs({
-                type: 'vertical', //Types: default, vertical, accordion
-                width: 'auto', //auto or any width like 600px
-                fit: true, // 100% fit in a container
-                closed: 'accordion', // Start closed if in accordion view
-                tabidentify: 'hor_1', // The tab groups identifier
-                activate: function(event) { // Callback function if tab is switched
-                    var $tab = $(this);
-                    var $info = $('#nested-tabInfo2');
-                    var $name = $('span', $info);
-                    $name.text($tab.text());
-                    $info.show();
-                }
+            $("#add_cart").click(function() {
+
+                //加入购物车的商品传到后台并在information-购物车中显示
             });
         });
     </script>
@@ -61,510 +60,54 @@
         </div>
 
     </div>
-</div>
 
-<div class="banner text-center">
-    <div class="container">
-        <h1> 用我们的<span class="segment-heading">双手  </span>创造奇迹 </h1>
-        <p>用平凡换来的惊奇，分享才能带来更大的快乐！</p>
+    <div class="main-banner banner text-center">
+        <div class="container">
+            <h1> 用我们的<span class="segment-heading">双手  </span>创造奇迹 </h1>
+            <p>用平凡换来的惊奇，分享才能带来更大的快乐！</p>
+        </div>
     </div>
 </div>
 
-<!-- Categories-section -->
-<div class="categories-section main-grid-border">
+<!--single-page-->
+<div class="single-page main-grid-border">
     <div class="container">
-        <h2 class="head">主要种类</h2>
-        <div class="category-list">
-            <div id="parentVerticalTab">
-                <ul class="resp-tabs-list hor_1">
-                    <li>手机</li>
-                    <li>电脑</li>
-                    <li>汽车</li>
-                    <li>家居</li>
-                    <li>宠物</li>
-                    <li>书籍</li>
-                    <li>服饰</li>
-                    <li>公寓</li>
-                </ul>
-                <div class="resp-tabs-container hor_1">
-                    <span class="active total" style="display:block;" >用户&nbsp;<strong><a href="login.html">请先登录</a></strong></span>
-                    <!--mobile-phone-->
-                    <div>
-                        <div class="category">
-                            <ul class="list">
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/m1.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">**********************************</h5>
-                                            <span class="adprice">￥290</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
+        <div class="product-desc">
+            <div class="col-md-12 product-view">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li data-thumb="images/ss1.jpg">
+                            <img src="images/ss1.jpg" />
+                        </li>
+                        <li data-thumb="images/ss2.jpg">
+                            <img src="images/ss2.jpg" />
+                        </li>
+                        <li data-thumb="images/ss3.jpg">
+                            <img src="images/ss3.jpg" />
+                        </li>
+                    </ul>
+                </div>
 
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/m2.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">**********************************</h5>
-                                            <span class="adprice">￥310</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/m3.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">***********************************</h5>
-                                            <span class="adprice">￥190</span>
-                                        </section>
-                                        <section class="list-right">
-                                            <div class="clearfix"></div>
-                                        </section>
-                                    </li>
-                                </a>
-
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/m4.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">************************************</h5>
-                                            <span class="adprice">￥480</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/m5.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">*************************************</h5>
-                                            <span class="adprice">￥859</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
+                <div class="product-details">
+                    <div class="left-content">
+                        <p><strong>详情：</strong> </p>
+                        <label><strong>商家：</strong><span class="sh_username"></span><br><strong>商家电话：</strong><span class="sh_phone"></span></label>
                     </div>
-                    <!--laptops-->
-                    <div>
-                        <div class="category">
-                            <ul class="list">
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/e1.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">***********************************</h5>
-                                            <span class="adprice">￥290</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/e2.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">***********************************</h5>
-                                            <span class="adprice">￥310</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/e3.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">***********************************</h5>
-                                            <span class="adprice">￥190</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/e4.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">**********************************</h5>
-                                            <span class="adprice">￥480</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/e5.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">**********************************</h5>
-                                            <span class="adprice">￥859</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-                            </ul>
-                        </div>
+                    <div class="right-content">
+                        <h2>价格：<span>￥</span></h2>
+                        <a class="btn btn-primary btn-lg" data-toggle="modal" data-target="#mymodal">
+                            <img src="images/btn_cart.png" id="add_cart"/>
+                        </a>
                     </div>
-                    <!--cars-->
-                    <div>
-                        <div class="category">
-                            <ul class="list">
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/c1.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">***********************************</h5>
-                                            <span class="adprice">￥290</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
+                    <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3>&nbsp;该宝贝已成功加入购物车~~</h3>
 
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/c2.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">***********************************</h5>
-                                            <span class="adprice">￥310</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/c3.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">***********************************</h5>
-                                            <span class="adprice">￥190</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/c4.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">**********************************</h5>
-                                            <span class="adprice">￥480</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/c5.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">**********************************</h5>
-                                            <span class="adprice">￥859</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-                            </ul>
-                        </div>
-                    </div>
-                    <!--furniture-->
-                    <div>
-                        <div class="category">
-                            <ul class="list">
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/fr1.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">***********************************</h5>
-                                            <span class="adprice">￥290</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/fr2.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">***********************************</h5>
-                                            <span class="adprice">￥310</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/fr3.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">***********************************</h5>
-                                            <span class="adprice">￥190</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/fr4.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">**********************************</h5>
-                                            <span class="adprice">￥480</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/fr5.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">**********************************</h5>
-                                            <span class="adprice">￥859</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-                            </ul>
-                        </div>
-                    </div>
-                    <!--pets-->
-                    <div>
-                        <div class="category">
-                            <ul class="list">
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/d1.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">***********************************</h5>
-                                            <span class="adprice">￥290</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/d2.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">***********************************</h5>
-                                            <span class="adprice">￥310</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/d3.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">***********************************</h5>
-                                            <span class="adprice">￥190</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/d4.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">**********************************</h5>
-                                            <span class="adprice">￥480</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/d5.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">**********************************</h5>
-                                            <span class="adprice">￥859</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-                            </ul>
-                        </div>
-                    </div>
-                    <!--books-->
-                    <div>
-                        <div class="category">
-                            <ul class="list">
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/b4.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">***********************************</h5>
-                                            <span class="adprice">￥290</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/b5.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">***********************************</h5>
-                                            <span class="adprice">￥310</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/b10.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">***********************************</h5>
-                                            <span class="adprice">￥190</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/b12.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">**********************************</h5>
-                                            <span class="adprice">￥480</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/b13.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">**********************************</h5>
-                                            <span class="adprice">￥859</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-                            </ul>
-                        </div>
-                    </div>
-                    <!--fashion-->
-                    <div>
-                        <div class="category">
-                            <ul class="list">
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/fa1.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">***********************************</h5>
-                                            <span class="adprice">￥290</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/fa2.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">***********************************</h5>
-                                            <span class="adprice">￥310</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/fa3.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">***********************************</h5>
-                                            <span class="adprice">￥190</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/fa4.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">**********************************</h5>
-                                            <span class="adprice">￥480</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/fa5.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">**********************************</h5>
-                                            <span class="adprice">￥859</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-                            </ul>
-                        </div>
-                    </div>
-                    <!--apartment-->
-                    <div>
-                        <div class="category">
-                            <ul class="list">
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/r1.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">***********************************</h5>
-                                            <span class="adprice">￥290</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/r2.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">***********************************</h5>
-                                            <span class="adprice">￥310</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/r3.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">***********************************</h5>
-                                            <span class="adprice">￥190</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/r4.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">**********************************</h5>
-                                            <span class="adprice">￥480</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-                                <a href="single.html">
-                                    <li>
-                                        <img src="images/r5.jpg" title="" alt="" />
-                                        <section class="list-left">
-                                            <h5 class="title">**********************************</h5>
-                                            <span class="adprice">￥859</span>
-                                        </section>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </a>
-                            </ul>
+                                </div>
+                                <div class="modal-body" align="center"><img src="images/ss1.jpg" /></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -572,7 +115,6 @@
             <div class="clearfix"></div>
         </div>
     </div>
-</div>
 </div>
 
 <!--footer-->
@@ -582,6 +124,7 @@
             <div class="footer-logo">
                 <a href="index.html"><span>二次</span>购</a>
             </div>
+
             <div class="copyrights">
                 <p>Copyright &copy; 2016.Company name All rights reserved.</p>
             </div>

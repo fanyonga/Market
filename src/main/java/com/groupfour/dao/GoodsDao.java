@@ -33,7 +33,7 @@ public interface GoodsDao {
     void updateGoods(Goods goods);
 
     /**
-     * 根据商品类别来获取所有该类商品列表
+     * 根据商品类别来获取所有该类发布中商品的列表
      *
      * @param classify
      * @return 商品列表
@@ -41,7 +41,7 @@ public interface GoodsDao {
     List<Goods> selectGoodsListByClassify(Classify classify);
 
     /**
-     * 模糊查询根据商品名来获取所有商品的信息
+     * 模糊查询根据商品名来获取所有发布中商品的列表
      *
      * @param gname
      * @return 商品列表
@@ -57,7 +57,13 @@ public interface GoodsDao {
     List<Goods> selectGoodsListByUser(User user);
 
     /**
-     * 根据商品id来获取评价信息
+     * 获取未审核商品信息列表
+     *
+     * @return
+     */
+    List<Goods> selectUncheckGoodList();
+    /**
+     * 根据商品id来获取商品信息
      *
      * @param id
      * @return

@@ -51,7 +51,11 @@ public class UserCtrl extends BaseCtrl{
             User actualUser=userService.userLogin(user);
             if(actualUser!=null){
                 request.getSession().setAttribute("account",actualUser.getAccount());
-                return redirect("/categories.html");
+                request.getSession().setAttribute("username",actualUser.getUsername());
+                if(actualUser.getRole()==1){
+                    return redirect("/manager.html");
+                }
+                return redirect("/information.html");
             }
         }
         request.getSession().setAttribute("msg","登陆失败请检查用户名和密码");
@@ -59,11 +63,12 @@ public class UserCtrl extends BaseCtrl{
     }
 
     @RequestMapping("loginOut")
-    @ResponseBody
-    public void loginOut(HttpServletRequest request, HttpServletResponse response){
+    public String loginOut(HttpServletRequest request, HttpServletResponse response){
         if(request.getSession().getAttribute("account")!=null){
             request.getSession().setAttribute("account",null);
+            request.getSession().setAttribute("username",null);
         }
+        return  redirect("/index.html");
     }
 
     @RequestMapping("register.json")
@@ -76,7 +81,7 @@ public class UserCtrl extends BaseCtrl{
 
         Map<String, Object> result = new HashMap<String, Object>();
         if (StringUtils.isBlank(errMsg)) {
-
+            param.remove("password2");
             JSONObject jsonObject = new JSONObject(param);
             User user = JSON.toJavaObject(jsonObject, User.class);
             if (userService.userIsExist(user)) {

@@ -35,7 +35,12 @@ public class JumpCtrl extends BaseCtrl{
     }
 
     @RequestMapping("login.html")
-    public  String toLogin(){
+    public  String toLogin(HttpServletRequest request, HttpServletResponse response){
+        String account= (String) request.getSession().getAttribute("account");
+        if(StringUtils.isNotBlank(account)){
+            request.setAttribute("msg","用户已登录");
+            return forward("/index.html");
+        }
         return "login";
     }
 
@@ -43,22 +48,24 @@ public class JumpCtrl extends BaseCtrl{
     public  String toRegister(HttpServletRequest request, HttpServletResponse response){
         String account= (String) request.getSession().getAttribute("account");
         if(StringUtils.isNotBlank(account)){
-            request.getSession().setAttribute("msg","用户已登录");
+            request.setAttribute("msg","用户已登录");
+            return forward("/index.html");
         }
         return "register";
     }
 
     @RequestMapping("categories.html")
     public String toCategories(HttpServletRequest request, HttpServletResponse response){
-        String account= (String) request.getSession().getAttribute("account");
-        if(StringUtils.isNotBlank(account)){
-            return "categories";
-        }
-        return "login";
+
+        return "categories";
     }
 
     @RequestMapping("information.html")
     public String toInformation(HttpServletRequest request, HttpServletResponse response){
+        String account= (String) request.getSession().getAttribute("account");
+        if(StringUtils.isBlank(account)){
+            return redirect("/login.html");
+        }
         return "information";
     }
 
@@ -71,11 +78,15 @@ public class JumpCtrl extends BaseCtrl{
                 return "manager";
             }
         }
-        return "login";
+        return redirect("/index.html");
     }
 
     @RequestMapping("showjudge.html")
     public String toShowJudge(HttpServletRequest request, HttpServletResponse response){
+        String account= (String) request.getSession().getAttribute("account");
+        if(StringUtils.isBlank(account)){
+            return redirect("/login.html");
+        }
         return "showjudge";
     }
 

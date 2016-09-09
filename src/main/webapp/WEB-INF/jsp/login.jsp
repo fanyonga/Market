@@ -2,8 +2,12 @@
 <%
     String path=request.getContextPath();
     String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-
+    String msg=(String)request.getAttribute("msg");
+    if(msg!=null){
+        request.removeAttribute("msg");
+    }
 %>
+
 
 <!DOCTYPE html>
 <html>
@@ -15,13 +19,13 @@
     <link rel="stylesheet" href="<%=basePath%>static/css/bootstrap.min.css">
     <link href="<%=basePath%>static/css/style.css" rel="stylesheet" type="text/css" media="all" />
 
-    <!-- for-mobile-apps
+    <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-    Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-     //for-mobile-apps -->
+
 
     <!--fonts
     <link href='http://fonts.useso.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
@@ -31,15 +35,15 @@
     <!-- js -->
     <script type="text/javascript" src="<%=basePath%>static/js/jquery.min.js"></script>
     <script src="<%=basePath%>static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>static/js/checkLogin.js"></script>
 </head>
 <body>
 <!--header-->
 <div class="header">
     <div class="container">
         <div class="logo">
-            <a href="/index.html"><span>二次</span>购</a>
+            <a href="index.html"><span>二次</span>购</a>
         </div>
-
     </div>
 </div>
 
@@ -52,23 +56,23 @@
                     <h1>用户登录</h1>
                 </div>
                 <div class="signin">
-                    <form class="form-group" action="\loginJudge" method="post">
+                    <form class="form-group" method="post" action="loginJudge">
                         <div class="log-input">
-                            <div class="log-input-left">
-                                <input type="text" class="user form-control" name="account" value="账号" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '账号';}"/>
-                            </div>
 
+                            <input type="text" id="account" name="account" class="account form-control" placeholder="账号" />
+                            <span id="check_account"></span>
                             <div class="clearfix"> </div>
                         </div>
-
                         <div class="log-input">
-                            <div class="log-input-left">
-                                <input type="password" class="lock form-control" name="password" value="密码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '密码';}"/>
-                            </div>
 
+                            <input type="password" id="password" name="password" class="lock form-control" placeholder="密码"/>
+                            <span id="check_password"></span>
                             <div class="clearfix"> </div>
                         </div>
-                        <input type="submit" value="登录">
+                        <!--后台验证登录是否成功-->
+                        <span id="login_result" style="color:red; font-size:30px;"><%=msg %></span>
+                        <input type="submit" value="登录" id="login_submit">
+
                     </form>
                 </div>
                 <div class="new_people">

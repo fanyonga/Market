@@ -5520,7 +5520,7 @@ if ( !jQuery.support.changeBubbles ) {
 		setup: function() {
 
 			if ( rformElems.test( this.nodeName ) ) {
-				// IE doesn't fire change on a check/radio util blur; trigger it on click
+				// IE doesn't fire change on a check/radio until blur; trigger it on click
 				// after a propertychange. Eat the blur-change in special.change.handle.
 				// This still fires onchange a second time for check/radio after blur.
 				if ( this.type === "checkbox" || this.type === "radio" ) {
@@ -7375,8 +7375,8 @@ if ( !jQuery.support.opacity ) {
 	};
 }
 
-// These hooks cannot be added util DOM ready because the support test
-// for it is not run util after DOM ready
+// These hooks cannot be added until DOM ready because the support test
+// for it is not run until after DOM ready
 jQuery(function() {
 	if ( !jQuery.support.reliableMarginRight ) {
 		jQuery.cssHooks.marginRight = {
@@ -8840,7 +8840,7 @@ var fxNow, timerId,
 				start = +target || 1;
 
 				do {
-					// If previous iteration zeroed out, double util we get *something*
+					// If previous iteration zeroed out, double until we get *something*
 					// Use a string for doubling factor so we don't accidentally see scale as unchanged below
 					scale = scale || ".5";
 

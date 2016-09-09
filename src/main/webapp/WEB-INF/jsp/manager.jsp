@@ -4,7 +4,6 @@
     String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,13 +15,13 @@
     <link href="<%=basePath%>static/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <link rel="stylesheet" type="text/css" href="<%=basePath%>static/css/easy-responsive-tabs.css " />
 
-    <!-- for-mobile-apps
+    <!-- for-mobile-apps-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-    Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-     //for-mobile-apps -->
+
 
     <!--fonts
     <link href='http://fonts.useso.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
@@ -57,9 +56,16 @@
         $(document).ready(function() {
             $(".goods_check").children(".btn-default").click(function() {
                 if(confirm("确定该商品通过审核吗？")){
+
+                    //审核通过的商品传到后台，分类后显示在categories中
+
+
+
+
+
+
                     $(this).css("background","#CCC");
                     $(this).html("已审核");
-
                 }
             });
         });
@@ -87,8 +93,7 @@
                             <ul class="resp-tabs-list hor_1">
                                 <li>用户管理</li>
                                 <li>商品管理</li>
-                                <li>留言管理</li>
-                                <li>公告管理</li>
+
 
                             </ul>
 
@@ -133,45 +138,8 @@
                                     </div>
                                 </div>
 
-                                <!--messager-manager-->
-                                <div>
 
-                                </div>
 
-                                <!--notice-manager-->
-                                <div>
-                                    <div class="category" id="notice">
-                                        <ul class="list">
-                                            <li>
-                                                <h3>公告1</h3>
-                                            </li>
-
-                                            <li>
-                                                <h3>公告2</h3>
-
-                                            </li>
-                                        </ul>
-
-                                        <div class="pull-right add_notice"><button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#fourmodal">新公告</button></div>
-                                        <div class="modal fade" id="fourmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h3>新公告</h3>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <textarea rows="10px" cols="70px"></textarea>
-
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                                        <button type="button" class="btn btn-danger">确定</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
 
                             </div>

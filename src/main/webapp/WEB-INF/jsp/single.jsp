@@ -4,7 +4,6 @@
     String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,13 +15,13 @@
     <link href="<%=basePath%>static/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <link rel="stylesheet" href="<%=basePath%>static/css/flexslider.css" type="text/css" media="screen" />
 
-    <!-- for-mobile-apps
+    <!--for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-    Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    //for-mobile-apps -->
+
 
     <!--fonts
     <link href='http://fonts.useso.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
@@ -38,6 +37,15 @@
             $('.flexslider').flexslider({
                 animation: "slide",
                 controlNav: "thumbnails"
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#add_cart").click(function() {
+
+                //加入购物车的商品传到后台并在information-购物车中显示
             });
         });
     </script>
@@ -80,11 +88,14 @@
                 </div>
 
                 <div class="product-details">
-                    <div class="left-content"><p><strong>详情</strong> : *****************************************</p></div>
+                    <div class="left-content">
+                        <p><strong>详情：</strong> </p>
+                        <label><strong>商家：</strong><span class="sh_username"></span><br><strong>商家电话：</strong><span class="sh_phone"></span></label>
+                    </div>
                     <div class="right-content">
-                        <h2>价格：￥135</h2>
-                        <a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#mymodal">
-                            <img src="images/btn_cart.png"/>
+                        <h2>价格：<span>￥</span></h2>
+                        <a class="btn btn-primary btn-lg" data-toggle="modal" data-target="#mymodal">
+                            <img src="images/btn_cart.png" id="add_cart"/>
                         </a>
                     </div>
                     <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -92,7 +103,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h3>&nbsp;该宝贝已成功加入购物车~~</h3>
-                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+
                                 </div>
                                 <div class="modal-body" align="center"><img src="images/ss1.jpg" /></div>
                             </div>

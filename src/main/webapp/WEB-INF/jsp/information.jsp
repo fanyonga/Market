@@ -16,13 +16,13 @@
     <link href="<%=basePath%>static/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <link rel="stylesheet" type="text/css" href="<%=basePath%>static/css/easy-responsive-tabs.css " />
 
-    <!-- for-mobile-apps
+    <!--for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-    Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-     //for-mobile-apps -->
+
 
     <!--fonts
     <link href='http://fonts.useso.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
@@ -33,7 +33,7 @@
     <script type="text/javascript" src="<%=basePath%>static/js/jquery.min.js"></script>
     <script src="<%=basePath%>static/js/bootstrap.min.js"></script>
     <script src="<%=basePath%>static/js/easyResponsiveTabs.js"></script>
-    <script type="text/javascript" src="<%=basePath%>static/js/shopcart.js"></script>
+    <script type="text/javascript" src="<%=basePath%>static/js/information.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#parentVerticalTab').easyResponsiveTabs({
@@ -48,41 +48,6 @@
                     var $name = $('span', $info);
                     $name.text($tab.text());
                     $info.show();
-                }
-            });
-        });
-    </script>
-
-    <!--shopcart-->
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $(".pay").children().click(function() {
-                if(confirm("确定付款吗？")){
-                    if($(".cart").find(".check-one").prop("checked")==true){
-                        $(this).parent().parent().remove();
-                    }
-                }
-            });
-        });
-    </script>
-
-    <!--上传图片-->
-    <script type="text/javascript">
-
-    </script>
-
-    <!--order-->
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $(".state").children(".btn-default").click(function(){
-                if(confirm("确定接单吗？")){
-                    $(this).css("background","#CCC");
-                    $(this).html("已接单");
-                }
-            });
-            $(".state").children(".btn-danger").click(function(){
-                if(confirm("确定删除此订单吗？")){
-                    $(this).parent().parent().remove();
                 }
             });
         });
@@ -108,11 +73,11 @@
                     <div class="category-list">
                         <div id="parentVerticalTab">
                             <ul class="resp-tabs-list hor_1">
-
                                 <li>购物车</li>
                                 <li>已付款的宝贝</li>
                                 <li>我的商品</li>
                                 <li>我的订单</li>
+                                <li>已接收的订单</li>
                             </ul>
 
                             <div class="resp-tabs-container hor_1">
@@ -178,6 +143,7 @@
                                 <div>
                                     <div class="category" id="has-bought">
                                         <ul class="list">
+
                                             <li>
                                                 <a href="single.html"><img src="images/m1.jpg" title="" alt="" /></a>
                                                 <section class="list-left">
@@ -206,11 +172,11 @@
                                                         <h3>评价~~</h3>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <textarea rows="10px" cols="70px"></textarea>
+                                                        <textarea rows="5px" cols="75px"></textarea>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                                        <button type="button" class="btn btn-danger">确定</button>
+                                                        <button type="submit" class="btn btn-danger">确定</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -222,7 +188,7 @@
                                 <div>
                                     <div class="category" id="goods">
                                         <ul class="list">
-                                            <a href="single.html">
+                                            <a href="showjudge.html">
                                                 <li>
                                                     <img src="images/m1.jpg" title="" alt="" />
                                                     <section class="list-left">
@@ -233,7 +199,7 @@
                                                 </li>
                                             </a>
 
-                                            <a href="single.html">
+                                            <a href="showjudge.html">
                                                 <li>
                                                     <img src="images/m2.jpg" title="" alt="" />
                                                     <section class="list-left">
@@ -252,14 +218,18 @@
                                                     <div class="modal-header">
                                                         <h3>发布新商品~~</h3>
                                                     </div>
-                                                    <div class="modal-body">
-
-                                                        <textarea rows="5px" cols="20px"></textarea>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                                        <button type="button" class="btn btn-danger">确定</button>
-                                                    </div>
+                                                    <form action="" method="post" >
+                                                        <div class="modal-body">
+                                                            上传图片：<input type="file" id="upload" name="upload" onChange="preview()"/><br>
+                                                            <img id="face"/>
+                                                            <div class="add_detail"><input type="text" id="add_price" name="add_price" placeholder="商品价格"/><br>
+                                                                <textarea placeholder="商家留言"></textarea></div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                                            <button type="submit" class="btn btn-danger">确定</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -275,6 +245,7 @@
                                                 <section class="list-left">
                                                     <h5 class="title">**********************************</h5>
                                                     <span class="adprice">￥290</span>
+                                                    <label>买家：<span class="customer"></span><br>买家电话：<span class="customer_phone"></span><br>收货地址：<span class="customer_address"></span></label>
                                                 </section>
                                                 <div class="state">
                                                     <button type="button" class="btn btn-default btn-lg">等待接单</button>
@@ -288,12 +259,41 @@
                                                 <section class="list-left">
                                                     <h5 class="title">**********************************</h5>
                                                     <span class="adprice">￥310</span>
-
+                                                    <label>买家：<span class="customer"></span><br>买家电话：<span class="customer_phone"></span><br>收货地址：<span class="customer_address"></span></label>
                                                 </section>
                                                 <div class="state">
                                                     <button type="button" class="btn btn-default btn-lg">等待接单</button>
                                                     <button type="button" class="btn btn-danger btn-xs pull-right">删除订单</button>
                                                 </div>
+                                                <div class="clearfix"></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!--has-ordered-->
+                                <div>
+                                    <div class="category" id="has-ordered">
+                                        <ul class="list">
+                                            <li>
+                                                <a href="single.html"><img src="images/m1.jpg" title="" alt="" /></a>
+                                                <section class="list-left">
+                                                    <h5 class="title">**********************************</h5>
+                                                    <span class="adprice">￥290</span>
+                                                    <label>买家：<span class="customer"></span><br>买家电话：<span class="customer_phone"></span><br>收货地址：<span class="customer_address"></span></label>
+                                                </section>
+
+                                                <div class="clearfix"></div>
+                                            </li>
+
+                                            <li>
+                                                <a href="single.html"><img src="images/m2.jpg" title="" alt="" /></a>
+                                                <section class="list-left">
+                                                    <h5 class="title">**********************************</h5>
+                                                    <span class="adprice">￥310</span>
+                                                    <label>买家：<span class="customer"></span><br>买家电话：<span class="customer_phone"></span><br>收货地址：<span class="customer_address"></span></label>
+                                                </section>
+
                                                 <div class="clearfix"></div>
                                             </li>
                                         </ul>

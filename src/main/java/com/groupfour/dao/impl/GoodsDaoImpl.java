@@ -34,12 +34,12 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements GoodsDao{
     }
 
     public List<Goods> selectGoodsListByClassify(Classify classify) {
-        List<Goods> list= (List<Goods>) getHibernateTemplate().find("from Goods where classify.cid=?",new Object[]{classify.getCid()});
+        List<Goods> list= (List<Goods>) getHibernateTemplate().find("from Goods where classify.cid=? and state=?",new Object[]{classify.getCid(),0});
         return list;
     }
 
     public List<Goods> selectGoodsListByName(String gname) {
-        List<Goods> list= (List<Goods>) getHibernateTemplate().find("from Goods where gname like '%?%'",new Object[]{gname});
+        List<Goods> list= (List<Goods>) getHibernateTemplate().find("from Goods where gname like '%?%' and state=?",new Object[]{gname,0});
         return list;
     }
 
@@ -50,5 +50,10 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements GoodsDao{
 
     public Goods selectGoodsById(int id) {
         return getHibernateTemplate().load(Goods.class,id);
+    }
+
+    public List<Goods> selectUncheckGoodList() {
+        List<Goods> list= (List<Goods>) getHibernateTemplate().find("from Goods where state=?",new Object[]{1});
+        return list;
     }
 }

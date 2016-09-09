@@ -4,7 +4,6 @@
     String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,13 +14,13 @@
     <link rel="stylesheet" href="<%=basePath%>static/css/bootstrap.min.css">
     <link href="<%=basePath%>static/css/style.css" rel="stylesheet" type="text/css" media="all" />
 
-    <!-- for-mobile-apps
+    <!-- for-mobile-apps-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-    Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-     //for-mobile-apps -->
+
 
     <!--fonts
     <link href='http://fonts.useso.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
@@ -63,10 +62,11 @@
                     </section>
                     <div class="clearfix"></div>
                 </li>
-                <li><span>用户one：</span><span>评价1</span></li>
-                <li><span>用户two：</span><span>评价2</span></li>
+                <li><span class="judge_user">用户one：</span><span class="notice">评价1</span></li>
+                <li><span class="judge_user">用户two：</span><span class="notice">评价2</span></li>
             </ul>
         </div>
+    </div>
 </section>
 
 
