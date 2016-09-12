@@ -1,10 +1,13 @@
 package com.groupfour.ctrl;
 
+import com.groupfour.entity.Goods;
 import com.groupfour.entity.User;
+import com.groupfour.service.GoodsService;
 import com.groupfour.service.UserService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -20,17 +23,22 @@ public class JumpCtrl extends BaseCtrl{
 
     public UserService userService;
 
-    public UserService getUserService() {
-        return userService;
-    }
+    public GoodsService goodsService;
 
     @Resource
     public void setUserService(UserService userService) {
         this.userService = userService;
     }
 
+    @Resource
+    public void setGoodsService(GoodsService goodsService) {
+        this.goodsService = goodsService;
+    }
+
+
     @RequestMapping("index.html")
     public String toIndex(){
+
         return "index";
     }
 
@@ -91,7 +99,12 @@ public class JumpCtrl extends BaseCtrl{
     }
 
     @RequestMapping("single.html")
-    public String toSingle(HttpServletRequest request, HttpServletResponse response){
-        return "single";
+    public String toSingle(@RequestParam("id") int id, HttpServletRequest request, HttpServletResponse response){
+        if(id>0){
+            Goods goods=goodsService.selectGoodsById(id);
+            request.setAttribute("goods",goods);
+            return "single";
+        }
+        return "index";
     }
 }

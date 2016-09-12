@@ -48,4 +48,11 @@ public interface GoodsService {
      */
     void insertGoods(Goods goods);
 
+    /**
+     * 根据id获取一个商品的具体信息
+     *
+     * @param id
+     * @return
+     */
+    Goods selectGoodsById(int id);
 }

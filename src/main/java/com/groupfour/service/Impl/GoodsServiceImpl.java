@@ -76,4 +76,8 @@ public class GoodsServiceImpl implements GoodsService{
     public void insertGoods(Goods goods) {
         goodsDao.insertGoods(goods);
     }
+
+    public Goods selectGoodsById(int id) {
+        return goodsDao.selectGoodsById(id);
+    }
 }

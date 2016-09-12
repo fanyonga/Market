@@ -72,15 +72,6 @@ $(document).ready(function() {
     });
 	
     $("#register_submit").click(function() {
-        var username=$("#username").val();
-		var account=$("#account").val();
-		var pwd1=$("#pwd1").val();
-		var pwd2=$("#pwd2").val();
-		var sex=$(":radio[name='sex']:checked").val();
-		var telephone=$("#telephone").val();
-		var email=$("#email").val();
-		var address=$("#address").val();
-
 		var param=$("#register-form").serialize();
 		//先验证账号是否已被注册，然后将数据传到后台
 		$.ajax({
@@ -89,11 +80,9 @@ $(document).ready(function() {
 			data:param,
 			datatype:'json',
 			success:function (data) {
-				$("#register-form").clear();
-				if(data.errCode==-1){
-					$("#register_result").append(data.errMsg);
-				}else if(data.errCode==1){
-					$("#register_result").append("注册成功！");
+				alert(data.errMsg);
+				if(data.errCode>0){
+					$("#register-form").clear();
 				}
 			}
 		});

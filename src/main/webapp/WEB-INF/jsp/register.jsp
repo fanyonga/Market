@@ -50,7 +50,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <p class="creating">为了更好的用户体验，您可以注册登录网站享受更多服务！</p>
 
                 <div class="sign-u">
-                    <form action="" method="post" id="register-form">
+                    <form action="#" method="post" id="register-form">
                         <table border="0" align="center">
                             <tr>
                                 <td class="sign-up1">用户&nbsp;名：</td>
@@ -125,7 +125,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                             </tr>
-                            <td><input type="submit" value="立即注册" id="register_submit"></td>
+                            <td><input type="button" value="立即注册" id="register_submit"></td>
                             <td class="sub_home"><p>去 &nbsp;<a href="login.html">登录</a></p></td>
 
                             </tr>

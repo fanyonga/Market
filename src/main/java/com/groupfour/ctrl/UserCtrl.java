@@ -37,11 +37,6 @@ public class UserCtrl extends BaseCtrl{
         this.userService = userService;
     }
 
-    @RequestMapping("/")
-    public String toIndex(){
-        return "index";
-    }
-
     @RequestMapping("loginJudge")
     public String login(@RequestParam("account") String account,@RequestParam("password") String password, HttpServletRequest request) {
         if(StringUtils.isNotBlank(account) && StringUtils.isNotBlank(password)){
@@ -92,6 +87,7 @@ public class UserCtrl extends BaseCtrl{
                 try {
                     userService.userRegister(user);
                     errCode = 1;
+                    errMsg="注册成功!";
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -109,7 +105,11 @@ public class UserCtrl extends BaseCtrl{
         String account = map.get("account");
         String email = map.get("email");
         String password = map.get("password");
-
+        String username=map.get("username");
+        if (StringUtils.isBlank(username))
+            return "请输入用户名";
+        if (!ValidateUtil.checkUserName(username))
+            return "用户名格式错误";
         if (StringUtils.isBlank(account))
             return "请输入账号";
         if (!ValidateUtil.checkUserName(account))

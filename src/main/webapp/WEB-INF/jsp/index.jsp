@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String path=request.getContextPath();
@@ -68,8 +69,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <a href="index.html"><span>二次</span>购</a>
         </div>
         <div class="header-right">
-            <a class="login" href="login.html">登录/</a>
-            <a class="out" href="#">退出</a>
+            <%
+                String username=(String)session.getAttribute("username");
+                if(username==null){
+                    out.print("<a class=\"login\" href=\"login.html\">登录</a>");
+                }
+                else {
+                    out.print("<a class=\"login\" href=\"information.html\">"+username+",你好!</a>");
+                    out.print("<a class=\"out\" href=\"loginOut\">退出</a>");
+                }
+            %>
         </div>
     </div>
 
@@ -183,95 +192,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="trend-ads">
             <h2>热门商品</h2>
             <ul id="flexiselDemo3">
-                <li>
+                <c:forEach items="${goodList}" var="good" varStatus="status">
+                    <c:if test="${status.index%4==1}"><li></c:if>
                     <div class="col-md-3 biseller-column">
-                        <a href="single.html">
-                            <img src="images/p1.jpg"/>
-                            <span class="price">&yen; 450</span>
+                        <a href="single.html?${good.id}>
+                            <img src="<%=basePath%>static/images/${good.name}"/>
+                            <span class="price">&yen; ${good.price}</span>
                         </a>
                     </div>
-
-                    <div class="col-md-3 biseller-column">
-                        <a href="single.html">
-                            <img src="images/p2.jpg"/>
-                            <span class="price">&yen; 399</span>
-                        </a>
-                    </div>
-
-                    <div class="col-md-3 biseller-column">
-                        <a href="single.html">
-                            <img src="images/p3.jpg"/>
-                            <span class="price">&yen; 199</span>
-                        </a>
-                    </div>
-
-                    <div class="col-md-3 biseller-column">
-                        <a href="single.html">
-                            <img src="images/p4.jpg"/>
-                            <span class="price">&yen; 159</span>
-                        </a>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="col-md-3 biseller-column">
-                        <a href="single.html">
-                            <img src="images/p5.jpg"/>
-                            <span class="price">&yen; 1599</span>
-                        </a>
-                    </div>
-
-                    <div class="col-md-3 biseller-column">
-                        <a href="single.html">
-                            <img src="images/p6.jpg"/>
-                            <span class="price">&yen; 1099</span>
-                        </a>
-                    </div>
-
-                    <div class="col-md-3 biseller-column">
-                        <a href="single.html">
-                            <img src="images/p7.jpg"/>
-                            <span class="price">&yen; 109</span>
-                        </a>
-                    </div>
-
-                    <div class="col-md-3 biseller-column">
-                        <a href="single.html">
-                            <img src="images/p8.jpg"/>
-                            <span class="price">&yen; 189</span>
-                        </a>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="col-md-3 biseller-column">
-                        <a href="single.html">
-                            <img src="images/p9.jpg"/>
-                            <span class="price">&yen; 2599</span>
-                        </a>
-                    </div>
-
-                    <div class="col-md-3 biseller-column">
-                        <a href="single.html">
-                            <img src="images/p10.jpg"/>
-                            <span class="price">&yen; 3999</span>
-                        </a>
-                    </div>
-
-                    <div class="col-md-3 biseller-column">
-                        <a href="single.html">
-                            <img src="images/p11.jpg"/>
-                            <span class="price">&yen; 2699</span>
-                        </a>
-                    </div>
-
-                    <div class="col-md-3 biseller-column">
-                        <a href="single.html">
-                            <img src="images/p12.jpg"/>
-                            <span class="price">&yen; 899</span>
-                        </a>
-                    </div>
-                </li>
+                    <c:if test="${status.index%4==1}"></li></c:if>
+                </c:forEach>
             </ul>
         </div>
     </div>

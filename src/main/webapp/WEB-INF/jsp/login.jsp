@@ -1,11 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
     String path=request.getContextPath();
     String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-    String msg=(String)request.getAttribute("msg");
-    if(msg!=null){
-        request.removeAttribute("msg");
-    }
 %>
 
 
@@ -70,7 +67,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <div class="clearfix"> </div>
                         </div>
                         <!--后台验证登录是否成功-->
-                        <span id="login_result" style="color:red; font-size:30px;"><%=msg %></span>
+                        <%
+                            String msg=(String)session.getAttribute("msg");
+                            if(msg!=null){
+                                out.print("<span id=\"login_result\" style=\"color:red; font-size:30px;\">"+msg+"</span>");
+                                session.removeAttribute("msg");
+                            }
+                        %>
                         <input type="submit" value="登录" id="login_submit">
 
                     </form>
