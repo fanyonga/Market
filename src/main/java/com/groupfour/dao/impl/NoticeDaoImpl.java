@@ -41,7 +41,7 @@ public class NoticeDaoImpl extends HibernateDaoSupport implements NoticeDao{
     public List<Notice> selectNoticeList(int option) {
         List<Notice> list=null;
         if(option==0){
-            list= (List<Notice>) getHibernateTemplate().find("from Notice order by state,time");
+            list= (List<Notice>) getHibernateTemplate().find("from Notice order by state desc,time desc");
         }
         else {
             list= (List<Notice>) getHibernateTemplate().find("from Notice where state !=?  order by state,time",new Object[]{2});

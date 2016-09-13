@@ -21,32 +21,23 @@
         <property name="sex">
             <column name="sex" sql-type="char(1)" length="1" />
         </property>
-        <property name="birth">
-            <column name="birth" sql-type="varchar(20)" length="20" />
-        </property>
         <property name="phone">
-            <column name="phone" sql-type="varchar(13)" length="13" />
+            <column name="phone" sql-type="char(13)" length="13" />
         </property>
         <property name="address">
             <column name="address" sql-type="varchar(256)" length="256" />
-        </property>
-        <property name="qq">
-            <column name="qq" sql-type="varchar(11)" length="11" />
         </property>
         <property name="email">
             <column name="email" sql-type="varchar(30)" length="30" />
         </property>
         <property name="pic">
-            <column name="pic" sql-type="varchar(256)" length="256" />
-        </property>
-        <property name="note">
-            <column name="note" sql-type="text" />
+            <column name="pic" sql-type="varchar(80)" length="80" />
         </property>
         <property name="role"  not-null="true">
             <column name="role" sql-type="int(11)"/>
         </property>
         <property name="time"  not-null="true">
-            <column name="time" sql-type="time"/>
+            <column name="time" sql-type="date"/>
         </property>
     </class>
 </hibernate-mapping>

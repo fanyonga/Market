@@ -55,4 +55,11 @@ public interface GoodsService {
      * @return
      */
     Goods selectGoodsById(int id);
+
+    /**
+     * 返回销量最高的16种新商品列表
+     *
+     * @return
+     */
+    List<Goods> selectHotGoodList();
 }

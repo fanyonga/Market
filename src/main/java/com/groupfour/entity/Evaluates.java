@@ -1,6 +1,7 @@
 package com.groupfour.entity;
 
-import java.sql.Time;
+
+import java.util.Date;
 
 /**
  * 评价表
@@ -11,10 +12,9 @@ public class Evaluates {
     private Orders orders;//订单
     private User user;//用户
     private Goods goods;//商品
-    private String grade;//商品打分
-    private String speed;//速度打分
+    private Integer grade;//商品打分
     private String evaluate;//评价
-    private Time time;//最后修改时间
+    private Date time;//最后修改时间
 
     public int getEid() {
         return eid;
@@ -48,20 +48,12 @@ public class Evaluates {
         this.goods = goods;
     }
 
-    public String getGrade() {
+    public Integer getGrade() {
         return grade;
     }
 
-    public void setGrade(String grade) {
+    public void setGrade(Integer grade) {
         this.grade = grade;
-    }
-
-    public String getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(String speed) {
-        this.speed = speed;
     }
 
     public String getEvaluate() {
@@ -72,11 +64,11 @@ public class Evaluates {
         this.evaluate = evaluate;
     }
 
-    public Time getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 }

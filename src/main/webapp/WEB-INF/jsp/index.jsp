@@ -1,5 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     String path=request.getContextPath();
     String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -193,14 +193,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <h2>热门商品</h2>
             <ul id="flexiselDemo3">
                 <c:forEach items="${goodList}" var="good" varStatus="status">
-                    <c:if test="${status.index%4==1}"><li></c:if>
+                    <c:if test="${status.index%4==0 && status.index/4>0}"></li></c:if>
+                    <c:if test="${status.index%4==0}"><li></c:if>
                     <div class="col-md-3 biseller-column">
-                        <a href="single.html?${good.id}>
-                            <img src="<%=basePath%>static/images/${good.name}"/>
+                        <a href="single.html?id=${good.gid}">
+                            <img src="<%=basePath%>static/images/${good.picture}"/>
                             <span class="price">&yen; ${good.price}</span>
                         </a>
                     </div>
-                    <c:if test="${status.index%4==1}"></li></c:if>
                 </c:forEach>
             </ul>
         </div>

@@ -1,6 +1,6 @@
 package com.groupfour.entity;
 
-import java.sql.Time;
+import java.util.Date;
 
 /**
  * 公告类
@@ -11,8 +11,8 @@ public class Notice {
     private User user;//用户
     private String title;//标题
     private String content;//内容
-    private int state;//状态 0-有效，1-置顶，2-过期
-    private Time time;//创建时间
+    private Integer state;//状态 0-有效，1-置顶，2-过期
+    private Date time;//创建时间
 
     public int getNoid() {
         return noid;
@@ -46,19 +46,19 @@ public class Notice {
         this.content = content;
     }
 
-    public int getState() {
-        return state;
-    }
-
-    public void setState(int state) {
-        this.state = state;
-    }
-
-    public Time getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(Date time) {
         this.time = time;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
     }
 }

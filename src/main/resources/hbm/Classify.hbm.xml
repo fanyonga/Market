@@ -10,7 +10,7 @@
             <generator class="native"/>
         </id>
         <property name="category" unique-key="true" not-null="true">
-            <column name="category" sql-type="varchar(256)" length="256"/>
+            <column name="category" sql-type="varchar(20)" length="20"/>
         </property>
     </class>
 </hibernate-mapping>

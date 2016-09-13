@@ -69,4 +69,11 @@ public interface GoodsDao {
      * @return
      */
     Goods selectGoodsById(int id);
+
+    /**
+     * 返回销量最高的16种商品
+     *
+     * @return
+     */
+    List<Goods> selectHotGoodList();
 }

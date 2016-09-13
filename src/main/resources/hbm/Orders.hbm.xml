@@ -17,29 +17,11 @@
         <property name="number">
             <column name="number" sql-type="int(11)" />
         </property>
-        <property name="price">
-            <column name="price" sql-type="float" precision="-1" />
-        </property>
-        <property name="total">
-            <column name="total" sql-type="float" precision="-1" />
-        </property>
-        <property name="way">
-            <column name="way" sql-type="int(11)" />
-        </property>
         <property name="ostate">
             <column name="ostate" sql-type="int(11)" />
         </property>
-        <property name="pstate">
-            <column name="pstate" sql-type="int(11)" />
-        </property>
-        <property name="phone">
-            <column name="phone" sql-type="varchar(11)" length="11" />
-        </property>
-        <property name="address">
-            <column name="address" sql-type="varchar(256)" length="256" />
-        </property>
         <property name="time" not-null="true">
-            <column name="time" sql-type="time"/>
+            <column name="time" sql-type="date"/>
         </property>
         <property name="note">
             <column name="note" sql-type="text" />

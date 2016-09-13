@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     String path=request.getContextPath();
     String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -84,7 +85,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <!--shopcart-->
                                 <div>
                                     <div id="cart" class="category">
-                                        <table id="cart" class="cart table table-striped">
+                                        <table  class="cart table table-striped">
                                             <thead>
                                             <tr>
                                                 <th><label style="width:60px;"><input class="check check-all" type="checkbox"/>全选</label></th>
@@ -96,30 +97,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td><input class="check check-one" type="checkbox"/></td>
-                                                <td class="good"><label><a href="single.html"><img src="images/m1.jpg" title="" alt="" /></a></label></td>
-                                                <td class="number small-bold-red"><span>139</span></td>
-                                                <td class="input-group">
-                                                    <span class="input-group-addon minus">-</span>
-                                                    <input type="text" class="number form-control input-sm" value="1" />
-                                                    <span class="input-group-addon plus">+</span>
-                                                </td>
-                                                <td class="subtotal number small-bold-red">139</td>
-                                                <td class="operation"><button type="button" class="delete btn btn-danger">删除</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td><input class="check check-one" type="checkbox"/></td>
-                                                <td class="good"><label><a href="single.html"><img src="images/m1.jpg" title="" alt="" /></a></label></td>
-                                                <td class="number small-bold-red"><span>139</span></td>
-                                                <td class="input-group">
-                                                    <span class="input-group-addon minus">-</span>
-                                                    <input type="text" class="number form-control input-sm" value="1" />
-                                                    <span class="input-group-addon plus">+</span>
-                                                </td>
-                                                <td class="subtotal number small-bold-red">139</td>
-                                                <td class="operation"><button type="button" class="delete btn btn-danger">删除</button></td>
-                                            </tr>
+
+                                                <c:forEach items="${cartGoodList}" var="good">
+                                                    <tr>
+                                                        <td><input class="check check-one" type="checkbox"/></td>
+                                                        <td class="good"><label><a href="single.html?id=${good.gid}">
+                                                            <img src="<%=basePath%>static/images/${good.picture}" title="" alt="" /></a></label></td>
+                                                        <td class="number small-bold-red"><span>${good.price}</span></td>
+                                                        <td class="input-group">
+                                                            <span class="input-group-addon minus">-</span>
+                                                            <input type="text" class="number form-control input-sm" value="1" />
+                                                            <span class="input-group-addon plus">+</span>
+                                                        </td>
+                                                        <td class="subtotal number small-bold-red">${good.price}</td>
+                                                        <td class="operation"><button type="button" class="delete btn btn-danger">删除</button></td>
+                                                    </tr>
+                                                </c:forEach>
                                             </tbody>
                                         </table>
                                         <div class="row">
@@ -143,26 +136,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div>
                                     <div class="category" id="has-bought">
                                         <ul class="list">
-
+                                            <c:forEach items="${buyedList}" var="good">
                                             <li>
-                                                <a href="single.html"><img src="images/m1.jpg" title="" alt="" /></a>
+                                                <a href="single.html?id=${good.gid}">
+                                                    <img src="<%=basePath%>static/images/${good.picture}" title="" alt="" />
+                                                </a>
                                                 <section class="list-left">
-                                                    <h5 class="title">**********************************</h5>
-                                                    <span class="adprice">￥290</span>
+                                                    <h5 class="title">${good.gname}</h5>
+                                                    <span class="adprice">${good.price}</span>
                                                 </section>
                                                 <div class="judge"><button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#threemodal">评价</button></div>
-                                                <div class="clearfix"></div>
+                                                <div class="clearfix"/>
                                             </li>
-
-                                            <li>
-                                                <a href="single.html"><img src="images/m2.jpg" title="" alt="" /></a>
-                                                <section class="list-left">
-                                                    <h5 class="title">**********************************</h5>
-                                                    <span class="adprice">￥310</span>
-                                                </section>
-                                                <div class="judge"><button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#threemodal">评价</button></div>
-                                                <div class="clearfix"></div>
-                                            </li>
+                                            </c:forEach>
                                         </ul>
 
                                         <div class="modal fade" id="threemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -188,27 +174,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div>
                                     <div class="category" id="goods">
                                         <ul class="list">
-                                            <a href="showjudge.html">
-                                                <li>
-                                                    <img src="images/m1.jpg" title="" alt="" />
-                                                    <section class="list-left">
-                                                        <h5 class="title">**********************************</h5>
-                                                        <span class="adprice">￥290</span>
-                                                    </section>
-                                                    <div class="clearfix"></div>
-                                                </li>
-                                            </a>
-
-                                            <a href="showjudge.html">
-                                                <li>
-                                                    <img src="images/m2.jpg" title="" alt="" />
-                                                    <section class="list-left">
-                                                        <h5 class="title">**********************************</h5>
-                                                        <span class="adprice">￥310</span>
-                                                    </section>
-                                                    <div class="clearfix"></div>
-                                                </li>
-                                            </a>
+                                            <c:forEach items="${myGoodList}" var="goods">
+                                                <a href="showjudge.html?id=${goods.gid}">
+                                                    <li>
+                                                        <img src="<%=basePath%>static/images/${goods.picture}" title="" alt="" />
+                                                        <section class="list-left">
+                                                            <h5 class="title">${goods.gname}</h5>
+                                                            <span class="adprice">￥${goods.price}</span>
+                                                        </section>
+                                                        <div class="clearfix"></div>
+                                                    </li>
+                                                </a>
+                                            </c:forEach>
                                         </ul>
 
                                         <div class="pull-right new"><button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#twomodal">发布新商品</button></div>
@@ -240,33 +217,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div>
                                     <div class="category" id="order">
                                         <ul class="list">
-                                            <li>
-                                                <a href="single.html"><img src="images/m1.jpg" title="" alt="" /></a>
-                                                <section class="list-left">
-                                                    <h5 class="title">**********************************</h5>
-                                                    <span class="adprice">￥290</span>
-                                                    <label>买家：<span class="customer"></span><br>买家电话：<span class="customer_phone"></span><br>收货地址：<span class="customer_address"></span></label>
-                                                </section>
-                                                <div class="state">
-                                                    <button type="button" class="btn btn-default btn-lg">等待接单</button>
-                                                    <button type="button" class="btn btn-danger btn-xs pull-right">删除订单</button>
-                                                </div>
-                                                <div class="clearfix"></div>
-                                            </li>
-
-                                            <li>
-                                                <a href="single.html"><img src="images/m2.jpg" title="" alt="" /></a>
-                                                <section class="list-left">
-                                                    <h5 class="title">**********************************</h5>
-                                                    <span class="adprice">￥310</span>
-                                                    <label>买家：<span class="customer"></span><br>买家电话：<span class="customer_phone"></span><br>收货地址：<span class="customer_address"></span></label>
-                                                </section>
-                                                <div class="state">
-                                                    <button type="button" class="btn btn-default btn-lg">等待接单</button>
-                                                    <button type="button" class="btn btn-danger btn-xs pull-right">删除订单</button>
-                                                </div>
-                                                <div class="clearfix"></div>
-                                            </li>
+                                            <c:forEach items="${myOrder}" var="order">
+                                                <li>
+                                                    <a href="single.html?id=${order.goods.gid}"><img src="<%=basePath%>static/images/${order.goods.picture}" title="" alt="" /></a>
+                                                    <section class="list-left">
+                                                        <h5 class="title">${order.goods.gname}</h5>
+                                                        <span class="adprice">￥${order.goods.price*order.number}</span>
+                                                        <label>卖家家：<span class="customer">${order.goods.user.username}</span><br>
+                                                            卖家电话：<span class="customer_phone">${order.goods.user.phone}</span><br>
+                                                            卖家地址：<span class="customer_address">${order.goods.user.address}</span>
+                                                        </label>
+                                                    </section>
+                                                    <div class="state">
+                                                        <button type="button" class="btn btn-default btn-lg">等待接单</button>
+                                                        <button type="button" class="btn btn-danger btn-xs pull-right">删除订单</button>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </li>
+                                            </c:forEach>
                                         </ul>
                                     </div>
                                 </div>
@@ -275,27 +243,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div>
                                     <div class="category" id="has-ordered">
                                         <ul class="list">
-                                            <li>
-                                                <a href="single.html"><img src="images/m1.jpg" title="" alt="" /></a>
-                                                <section class="list-left">
-                                                    <h5 class="title">**********************************</h5>
-                                                    <span class="adprice">￥290</span>
-                                                    <label>买家：<span class="customer"></span><br>买家电话：<span class="customer_phone"></span><br>收货地址：<span class="customer_address"></span></label>
-                                                </section>
-
-                                                <div class="clearfix"></div>
-                                            </li>
-
-                                            <li>
-                                                <a href="single.html"><img src="images/m2.jpg" title="" alt="" /></a>
-                                                <section class="list-left">
-                                                    <h5 class="title">**********************************</h5>
-                                                    <span class="adprice">￥310</span>
-                                                    <label>买家：<span class="customer"></span><br>买家电话：<span class="customer_phone"></span><br>收货地址：<span class="customer_address"></span></label>
-                                                </section>
-
-                                                <div class="clearfix"></div>
-                                            </li>
+                                            <c:forEach items="${myRecOrder}" var="order">
+                                                <li>
+                                                    <a href="single.html?id=${order.goods.gid}">
+                                                        <img src="<%=basePath%>static/images/${order.goods.picture}" title="" alt="" />
+                                                    </a>
+                                                    <section class="list-left">
+                                                        <h5 class="title">${order.goods.gname}</h5>
+                                                        <span class="adprice">￥${order.goods.price*order.number}</span>
+                                                        <label>买家：<span class="customer">${order.user.username}</span><br>
+                                                            买家电话：<span class="customer_phone">${order.user.phone}</span><br>
+                                                            买家收货地址：<span class="customer_address">${order.user.address}</span>
+                                                        </label>
+                                                    </section>
+                                                    <div class="state">
+                                                        <button type="button" class="btn btn-default btn-lg">等待接单</button>
+                                                        <button type="button" class="btn btn-danger btn-xs pull-right">删除订单</button>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </li>
+                                            </c:forEach>
                                         </ul>
                                     </div>
                                 </div>

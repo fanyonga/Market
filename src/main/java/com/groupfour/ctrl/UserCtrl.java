@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.Time;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -83,7 +82,7 @@ public class UserCtrl extends BaseCtrl{
                 errMsg = "账号已存在！";
             } else {
                 user.setRole(0);
-                user.setTime(new Time(new Date().getTime()));
+                user.setTime(new Date());
                 try {
                     userService.userRegister(user);
                     errCode = 1;
@@ -108,8 +107,6 @@ public class UserCtrl extends BaseCtrl{
         String username=map.get("username");
         if (StringUtils.isBlank(username))
             return "请输入用户名";
-        if (!ValidateUtil.checkUserName(username))
-            return "用户名格式错误";
         if (StringUtils.isBlank(account))
             return "请输入账号";
         if (!ValidateUtil.checkUserName(account))

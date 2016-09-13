@@ -4,8 +4,12 @@ import com.groupfour.dao.GoodsDao;
 import com.groupfour.entity.Classify;
 import com.groupfour.entity.Goods;
 import com.groupfour.entity.User;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.context.annotation.Scope;
+import org.springframework.orm.hibernate5.HibernateCallback;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
@@ -54,6 +58,18 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements GoodsDao{
 
     public List<Goods> selectUncheckGoodList() {
         List<Goods> list= (List<Goods>) getHibernateTemplate().find("from Goods where state=?",new Object[]{1});
+        return list;
+    }
+
+    public List<Goods> selectHotGoodList() {
+        List<Goods> list=(List<Goods>)getHibernateTemplate().execute(new HibernateCallback() {
+            public Object doInHibernate(Session session) throws HibernateException {
+                Query query=session.createQuery("from Goods  where state=0 order by saled_num desc");
+                query.setFirstResult(0);
+                query.setMaxResults(16);
+                return query.list();
+            }
+        });
         return list;
     }
 }

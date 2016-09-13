@@ -19,16 +19,13 @@
             <column name="gid"/>
         </many-to-one>
         <property name="grade">
-            <column name="grade" sql-type="char(1)" length="1" />
-        </property>
-        <property name="speed">
-            <column name="speed" sql-type="char(1)" length="1" />
+            <column name="grade" sql-type="int" length="1" />
         </property>
         <property name="evaluate">
             <column name="evaluate" sql-type="text" />
         </property>
         <property name="time" not-null="true">
-            <column name="time" sql-type="time"/>
+            <column name="ctime" sql-type="time"/>
         </property>
     </class>
 </hibernate-mapping>

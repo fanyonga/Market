@@ -12,16 +12,16 @@
             <column name="uid"/>
         </many-to-one>
         <property name="title" not-null="true">
-            <column name="title" sql-type="varchar(256)" length="256"/>
+            <column name="title" sql-type="varchar(60)" length="60"/>
         </property>
         <property name="content">
             <column name="content" sql-type="text" />
         </property>
         <property name="state" not-null="true">
-            <column name="state" sql-type="int(11)"/>
+            <column name="state" sql-type="int(1)"/>
         </property>
         <property name="time" not-null="true">
-            <column name="time" sql-type="time"/>
+            <column name="ctime" sql-type="date"/>
         </property>
     </class>
 </hibernate-mapping>

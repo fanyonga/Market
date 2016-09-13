@@ -44,8 +44,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script type="text/javascript">
         $(document).ready(function() {
             $("#add_cart").click(function() {
-
-                //加入购物车的商品传到后台并在information-购物车中显示
+                var gid=$("#good_id").text();
+                $.ajax({
+                    url:'cart.json',
+                    type:'post',
+                    data:{'action':'add','gid':gid},
+                    datatype:'json',
+                    success:function (data) {
+                        //将返回的提示信息data{code,msg}输出到modal-header这里
+                    }
+                })
             });
         });
     </script>
@@ -67,7 +75,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
 </div>
-
+<div id="good_id" hidden="hidden">${good.id}</div>
 <!--single-page-->
 <div class="single-page main-grid-border">
     <div class="container">
@@ -75,27 +83,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-md-12 product-view">
                 <div class="flexslider">
                     <ul class="slides">
-                        <li data-thumb="images/ss1.jpg">
-                            <img src="images/ss1.jpg" />
+                        <li data-thumb="<%=basePath%>static/images/${goods.picture}">
+                            <img src="<%=basePath%>static/images/${goods.picture}" />
                         </li>
-                        <li data-thumb="images/ss2.jpg">
-                            <img src="images/ss2.jpg" />
+                        <li data-thumb="<%=basePath%>static/images/${goods.picture}">
+                            <img src="<%=basePath%>static/images/${goods.picture}" />
                         </li>
-                        <li data-thumb="images/ss3.jpg">
-                            <img src="images/ss3.jpg" />
+                        <li data-thumb="<%=basePath%>static/images/${goods.picture}">
+                            <img src="<%=basePath%>static/images/${goods.picture}" />
                         </li>
                     </ul>
                 </div>
 
                 <div class="product-details">
                     <div class="left-content">
-                        <p><strong>详情：</strong> </p>
-                        <label><strong>商家：</strong><span class="sh_username"></span><br><strong>商家电话：</strong><span class="sh_phone"></span></label>
+                        <p><strong>详情：</strong>${goods.descript}</p>
+                        <label><strong>商家：</strong><span class="sh_username">${goods.user.username}</span><br><strong>商家电话：</strong><span class="sh_phone">${goods.user.phone}</span></label>
                     </div>
                     <div class="right-content">
-                        <h2>价格：<span>￥</span></h2>
+                        <h2>价格：<span>￥</span>${goods.price}</h2>
                         <a class="btn btn-primary btn-lg" data-toggle="modal" data-target="#mymodal">
-                            <img src="images/btn_cart.png" id="add_cart"/>
+                            <img src="<%=basePath%>static/images/btn_cart.png" id="add_cart"/>
                         </a>
                     </div>
                     <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -105,7 +113,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <h3>&nbsp;该宝贝已成功加入购物车~~</h3>
 
                                 </div>
-                                <div class="modal-body" align="center"><img src="images/ss1.jpg" /></div>
+                                <div class="modal-body" align="center"><img src="<%=basePath%>static/images/${goods.picture}" /></div>
                             </div>
                         </div>
                     </div>

@@ -1,6 +1,6 @@
 package com.groupfour.entity;
 
-import java.sql.Time;
+import java.util.Date;
 
 /**
  * 留言表
@@ -12,9 +12,7 @@ public class Notes {
     public Goods goods;//商品
     private String title;//标题
     private String content;//内容
-    private Integer readperson;//查看人
-    private Integer state;//状态，0-未查看，1-已查看
-    private Time time;//留言时间
+    private Date time;//留言时间
 
     public int getNid() {
         return nid;
@@ -56,28 +54,11 @@ public class Notes {
         this.content = content;
     }
 
-    public Integer getReadperson() {
-        return readperson;
-    }
-
-    public void setReadperson(Integer readperson) {
-        this.readperson = readperson;
-    }
-
-    public Integer getState() {
-        return state;
-    }
-
-    public void setState(Integer state) {
-        this.state = state;
-    }
-
-    public Time getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(Date time) {
         this.time = time;
     }
-
 }

@@ -15,47 +15,32 @@
         <many-to-one name="classify" class="com.groupfour.entity.Classify">
             <column name="cid"/>
         </many-to-one>
-        <property name="category">
-            <column name="category" sql-type="char(20)" length="20" />
-        </property>
         <property name="gname" not-null="true">
-            <column name="gname" sql-type="char(20)" length="20"/>
-        </property>
-        <property name="parea">
-            <column name="parea" sql-type="int(11)" />
+            <column name="gname" sql-type="varchar(40)" length="40"/>
         </property>
         <property name="price">
-            <column name="price" sql-type="float" precision="-1" />
-        </property>
-        <property name="con">
-            <column name="con" sql-type="int(11)" />
-        </property>
-        <property name="area">
-            <column name="area" sql-type="float" precision="-1" />
+            <column name="price" sql-type="double" precision="-2" />
         </property>
         <property name="picture">
-            <column name="picture" sql-type="varchar(256)" />
-        </property>
-        <property name="content">
-            <column name="content" sql-type="char(20)" length="20" />
-        </property>
-        <property name="phone">
-            <column name="phone" sql-type="char(20)" length="20" />
+            <column name="picture" sql-type="varchar(80)" />
         </property>
         <property name="descript">
             <column name="descript" sql-type="text" />
         </property>
         <property name="rtime">
-            <column name="rtime" sql-type="time" />
+            <column name="rtime" sql-type="date" />
         </property>
         <property name="stock">
             <column name="stock" sql-type="int(11)" />
         </property>
         <property name="state" not-null="true">
-            <column name="state" sql-type="char(1)" length="1"/>
+            <column name="state" sql-type="int" length="1"/>
         </property>
         <property name="ctime" not-null="true">
-            <column name="ctime" sql-type="time"/>
+            <column name="ctime" sql-type="date"/>
+        </property>
+        <property name="saled_num">
+            <column name="saled_num" sql-type="int(11)"/>
         </property>
     </class>
 </hibernate-mapping>

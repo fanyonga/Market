@@ -80,4 +80,8 @@ public class GoodsServiceImpl implements GoodsService{
     public Goods selectGoodsById(int id) {
         return goodsDao.selectGoodsById(id);
     }
+
+    public List<Goods> selectHotGoodList(){
+        return goodsDao.selectHotGoodList();
+    }
 }

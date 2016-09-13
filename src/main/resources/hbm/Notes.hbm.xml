@@ -12,23 +12,14 @@
         <many-to-one name="user" class="com.groupfour.entity.User">
             <column name="uid"/>
         </many-to-one>
-        <many-to-one name="goods" class="com.groupfour.entity.Goods" not-null="true">
-            <column name="gid"/>
-        </many-to-one>
         <property name="title">
             <column name="title" sql-type="varchar(40)" length="40"/>
         </property>
         <property name="content">
             <column name="content" sql-type="text" />
         </property>
-        <property name="readperson">
-            <column name="readperson" sql-type="int(11)" />
-        </property>
-        <property name="state">
-            <column name="state" sql-type="int(11)" />
-        </property>
         <property name="time"  not-null="true">
-            <column name="time" sql-type="time"/>
+            <column name="ctime" sql-type="time"/>
         </property>
     </class>
 </hibernate-mapping>
