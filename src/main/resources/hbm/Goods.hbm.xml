@@ -9,10 +9,10 @@
             <column name="gid" sql-type="int(11)"/>
             <generator class="native"/>
         </id>
-        <many-to-one name="user" class="com.groupfour.entity.User">
+        <many-to-one name="user" class="com.groupfour.entity.User" lazy="false" fetch="join">
             <column name="uid"/>
         </many-to-one>
-        <many-to-one name="classify" class="com.groupfour.entity.Classify">
+        <many-to-one name="classify" class="com.groupfour.entity.Classify" lazy="false" fetch="join">
             <column name="cid"/>
         </many-to-one>
         <property name="gname" not-null="true">

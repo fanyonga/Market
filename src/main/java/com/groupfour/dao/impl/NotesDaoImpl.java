@@ -35,6 +35,6 @@ public class NotesDaoImpl extends HibernateDaoSupport implements NotesDao{
     }
 
     public Notes selectNotesById(int id) {
-        return getHibernateTemplate().load(Notes.class,id);
+        return getHibernateTemplate().get(Notes.class,id);
     }
 }

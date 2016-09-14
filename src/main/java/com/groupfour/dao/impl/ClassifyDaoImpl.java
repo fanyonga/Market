@@ -32,6 +32,6 @@ public class ClassifyDaoImpl extends HibernateDaoSupport implements ClassifyDao 
     }
 
     public Classify selectClassifyById(int id) {
-        return getHibernateTemplate().load(Classify.class,id);
+        return getHibernateTemplate().get(Classify.class,id);
     }
 }

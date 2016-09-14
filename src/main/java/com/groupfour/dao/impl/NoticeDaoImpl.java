@@ -54,6 +54,6 @@ public class NoticeDaoImpl extends HibernateDaoSupport implements NoticeDao{
     }
 
     public Notice selectNoticeById(int id) {
-        return getHibernateTemplate().load(Notice.class,id);
+        return getHibernateTemplate().get(Notice.class,id);
     }
 }

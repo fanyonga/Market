@@ -53,7 +53,7 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements GoodsDao{
     }
 
     public Goods selectGoodsById(int id) {
-        return getHibernateTemplate().load(Goods.class,id);
+        return getHibernateTemplate().get(Goods.class,id);
     }
 
     public List<Goods> selectUncheckGoodList() {

@@ -8,7 +8,7 @@
         <id name="noid">
             <column name="noid" sql-type="int(11)"/>
         </id>
-        <many-to-one name="user" class="com.groupfour.entity.User">
+        <many-to-one name="user" class="com.groupfour.entity.User" lazy="false" fetch="join">
             <column name="uid"/>
         </many-to-one>
         <property name="title" not-null="true">

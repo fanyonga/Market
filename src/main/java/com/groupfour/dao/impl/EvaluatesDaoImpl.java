@@ -34,6 +34,6 @@ public class EvaluatesDaoImpl extends HibernateDaoSupport implements EvaluatesDa
     }
 
     public Evaluates selectEvaluatesById(int id) {
-       return getHibernateTemplate().load(Evaluates.class,id);
+       return getHibernateTemplate().get(Evaluates.class,id);
     }
 }

@@ -8,10 +8,10 @@
         <id name="oid">
             <column name="oid" sql-type="int(11)"/>
         </id>
-        <many-to-one name="goods" class="com.groupfour.entity.Goods" not-null="true" >
+        <many-to-one name="goods" class="com.groupfour.entity.Goods" lazy="false" fetch="join" >
             <column name="gid"/>
         </many-to-one>
-        <many-to-one name="user" class="com.groupfour.entity.User">
+        <many-to-one name="user" class="com.groupfour.entity.User" lazy="false" fetch="join">
             <column name="uid"/>
         </many-to-one>
         <property name="number">

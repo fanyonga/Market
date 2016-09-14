@@ -36,7 +36,7 @@ public class OrdersDaoImpl extends HibernateDaoSupport implements OrdersDao{
     }
 
     public Orders selectOrdersById(int id) {
-        return  getHibernateTemplate().load(Orders.class,id);
+        return  getHibernateTemplate().get(Orders.class,id);
     }
 
     public List<Orders> getOrdersListByBuyer(User user) {
