@@ -115,33 +115,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div>
                                     <div class="category" id="goods_manager">
                                         <ul class="list">
-                                            <li>
-                                                <a href="single.html"><img src="images/m1.jpg" title="" alt="" /></a>
-                                                <section class="list-left">
-                                                    <h5 class="title">**********************************</h5>
-                                                    <span class="adprice">￥290</span>
-                                                </section>
-                                                <div class="goods_check"><button type="button" class="btn btn-default btn-lg">等待审核</button></div>
-                                                <div class="clearfix"></div>
-                                            </li>
-
-                                            <li>
-                                                <a href="single.html"><img src="images/m2.jpg" title="" alt="" /></a>
-                                                <section class="list-left">
-                                                    <h5 class="title">**********************************</h5>
-                                                    <span class="adprice">￥310</span>
-                                                </section>
-                                                <div class="goods_check"><button type="button" class="btn btn-default btn-lg">等待审核</button></div>
-                                                <div class="clearfix"></div>
-                                            </li>
+                                            <c:forEach items="${checkGoodList}" var="good">
+                                                <li>
+                                                    <a href="single.html?id=${good.gid}">
+                                                    <img src="<%=basePath%>static/images/${good.picture}" title="" alt="" />
+                                                    </a>
+                                                    <section class="list-left">
+                                                    <h5 class="title">${good.gname}</h5>
+                                                    <span class="adprice">${good.price}</span>
+                                                    </section>
+                                                    <div class="goods_check"><button type="button" class="btn btn-default btn-lg">等待审核</button></div>
+                                                    <div class="clearfix"></div>
+                                                </li>
+                                            </c:forEach>
                                         </ul>
                                     </div>
                                 </div>
-
-
-
-
-
                             </div>
                             <div class="clearfix"></div>
                         </div>

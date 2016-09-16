@@ -52,6 +52,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     datatype:'json',
                     success:function (data) {
                         //将返回的提示信息data{code,msg}输出到modal-header这里
+                        $(".modal-header").html("&nbsp;"+data.msg)
                     }
                 })
             });
@@ -75,7 +76,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
 </div>
-<div id="good_id" hidden="hidden">${good.id}</div>
+<div id="good_id" hidden="hidden">${goods.gid}</div>
 <!--single-page-->
 <div class="single-page main-grid-border">
     <div class="container">
@@ -110,8 +111,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h3>&nbsp;该宝贝已成功加入购物车~~</h3>
-
                                 </div>
                                 <div class="modal-body" align="center"><img src="<%=basePath%>static/images/${goods.picture}" /></div>
                             </div>

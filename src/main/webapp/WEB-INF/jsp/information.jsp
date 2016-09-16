@@ -171,6 +171,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>
 
                                 <!--goods-->
+                                <!--添加商品是否成功是否成功-->
+                                <%
+                                    String msg=(String)session.getAttribute("msg");
+                                    if(msg!=null){
+                                        out.print("<span id=\"goods_result\" style=\"color:red; font-size:30px;\">"+msg+"</span>");
+                                        session.removeAttribute("msg");
+                                    }
+                                %>
                                 <div>
                                     <div class="category" id="goods">
                                         <ul class="list">
@@ -195,12 +203,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                     <div class="modal-header">
                                                         <h3>发布新商品~~</h3>
                                                     </div>
-                                                    <form action="" method="post" >
+                                                    <form action="addGoodInfo" method="post" enctype="multipart/form-data" >
                                                         <div class="modal-body">
-                                                            上传图片：<input type="file" id="upload" name="upload" onChange="preview()"/><br>
+                                                            上传图片：<input type="file" id="upload" name="file" onChange="preview()"/><br>
                                                             <img id="face"/>
-                                                            <div class="add_detail"><input type="text" id="add_price" name="add_price" placeholder="商品价格"/><br>
-                                                                <textarea placeholder="商家留言"></textarea></div>
+                                                            <div class="add_detail">
+                                                                <input type="text" id="add_gname" name="gname" placeholder="商品名称"/><br>
+                                                                <input type="text" id="add_price" name="price" placeholder="商品价格"/><br>
+                                                                <input type="text" id="add_stock" name="stock" placeholder="商品存货"/>
+                                                                <textarea placeholder="商品描述" name="descript"></textarea>
+                                                            </div>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
