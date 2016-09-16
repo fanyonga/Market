@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     String path=request.getContextPath();
     String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -8,15 +9,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Single</title>
+    <title>Categories</title>
     <meta charset="utf-8">
 
     <!--css-->
     <link rel="stylesheet" href="<%=basePath%>static/css/bootstrap.min.css">
     <link href="<%=basePath%>static/css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <link rel="stylesheet" href="<%=basePath%>static/css/flexslider.css" type="text/css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>static/css/easy-responsive-tabs.css " />
 
-    <!--for-mobile-apps -->
+    <!-- for-mobile-apps-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
@@ -32,21 +33,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- js -->
     <script type="text/javascript" src="<%=basePath%>static/js/jquery.min.js"></script>
     <script src="<%=basePath%>static/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="<%=basePath%>static/js/jquery.flexslider.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('.flexslider').flexslider({
-                animation: "slide",
-                controlNav: "thumbnails"
-            });
-        });
-    </script>
-
+    <script src="<%=basePath%>static/js/easyResponsiveTabs.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $("#add_cart").click(function() {
-
-                //加入购物车的商品传到后台并在information-购物车中显示
+            //Vertical Tab
+            $('#parentVerticalTab').easyResponsiveTabs({
+                type: 'vertical', //Types: default, vertical, accordion
+                width: 'auto', //auto or any width like 600px
+                fit: true, // 100% fit in a container
+                closed: 'accordion', // Start closed if in accordion view
+                tabidentify: 'hor_1', // The tab groups identifier
+                activate: function(event) { // Callback function if tab is switched
+                    var $tab = $(this);
+                    var $info = $('#nested-tabInfo2');
+                    var $name = $('span', $info);
+                    $name.text($tab.text());
+                    $info.show();
+                }
             });
         });
     </script>
@@ -60,54 +63,183 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
 
     </div>
+</div>
 
-    <div class="main-banner banner text-center">
-        <div class="container">
-            <h1> 用我们的<span class="segment-heading">双手  </span>创造奇迹 </h1>
-            <p>用平凡换来的惊奇，分享才能带来更大的快乐！</p>
-        </div>
+<div class="banner text-center">
+    <div class="container">
+        <h1> 用我们的<span class="segment-heading">双手  </span>创造奇迹 </h1>
+        <p>用平凡换来的惊奇，分享才能带来更大的快乐！</p>
     </div>
 </div>
 
-<!--single-page-->
-<div class="single-page main-grid-border">
+<!-- Categories-section -->
+<div class="categories-section main-grid-border">
     <div class="container">
-        <div class="product-desc">
-            <div class="col-md-12 product-view">
-                <div class="flexslider">
-                    <ul class="slides">
-                        <li data-thumb="images/ss1.jpg">
-                            <img src="images/ss1.jpg" />
-                        </li>
-                        <li data-thumb="images/ss2.jpg">
-                            <img src="images/ss2.jpg" />
-                        </li>
-                        <li data-thumb="images/ss3.jpg">
-                            <img src="images/ss3.jpg" />
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="product-details">
-                    <div class="left-content">
-                        <p><strong>详情：</strong> </p>
-                        <label><strong>商家：</strong><span class="sh_username"></span><br><strong>商家电话：</strong><span class="sh_phone"></span></label>
+        <h2 class="head">主要种类</h2>
+        <div class="category-list">
+            <div id="parentVerticalTab">
+                <ul class="resp-tabs-list hor_1">
+                    <li>手机</li>
+                    <li>电脑</li>
+                    <li>汽车</li>
+                    <li>家居</li>
+                    <li>宠物</li>
+                    <li>书籍</li>
+                    <li>服饰</li>
+                    <li>公寓</li>
+                </ul>
+                <div class="resp-tabs-container hor_1">
+                    <!--mobile-phone-->
+                    <div>
+                        <div class="category">
+                            <ul class="list">
+                                <c:forEach items="${goodsList1}" var="goods">
+                                    <a href="single.html?id=${goods.gid}">
+                                        <li>
+                                            <img src="<%=basePath%>static/images/${goods.picture}" title="" alt="" />
+                                            <section class="list-left">
+                                                <h5 class="title">${goods.gname}</h5>
+                                                <span class="adprice">￥${goods.price}</span>
+                                            </section>
+                                            <div class="clearfix"></div>
+                                        </li>
+                                    </a>
+                                </c:forEach>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
                     </div>
-                    <div class="right-content">
-                        <h2>价格：<span>￥</span></h2>
-                        <a class="btn btn-primary btn-lg" data-toggle="modal" data-target="#mymodal">
-                            <img src="images/btn_cart.png" id="add_cart"/>
-                        </a>
+                    <!--laptops-->
+                    <div>
+                        <div class="category">
+                            <ul class="list">
+                                <c:forEach items="${goodsList2}" var="goods">
+                                    <a href="single.html?id=${goods.gid}">
+                                        <li>
+                                            <img src="<%=basePath%>static/images/${goods.picture}" title="" alt="" />
+                                            <section class="list-left">
+                                                <h5 class="title">${goods.gname}</h5>
+                                                <span class="adprice">￥${goods.price}</span>
+                                            </section>
+                                            <div class="clearfix"></div>
+                                        </li>
+                                    </a>
+                                </c:forEach>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h3>&nbsp;该宝贝已成功加入购物车~~</h3>
-
-                                </div>
-                                <div class="modal-body" align="center"><img src="images/ss1.jpg" /></div>
-                            </div>
+                    <!--cars-->
+                    <div>
+                        <div class="category">
+                            <ul class="list">
+                                <c:forEach items="${goodsList3}" var="goods">
+                                    <a href="single.html?id=${goods.gid}">
+                                        <li>
+                                            <img src="<%=basePath%>static/images/${goods.picture}" title="" alt="" />
+                                            <section class="list-left">
+                                                <h5 class="title">${goods.gname}</h5>
+                                                <span class="adprice">￥${goods.price}</span>
+                                            </section>
+                                            <div class="clearfix"></div>
+                                        </li>
+                                    </a>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--furniture-->
+                    <div>
+                        <div class="category">
+                            <ul class="list">
+                                <c:forEach items="${goodsList4}" var="goods">
+                                    <a href="single.html?id=${goods.gid}">
+                                        <li>
+                                            <img src="<%=basePath%>static/images/${goods.picture}" title="" alt="" />
+                                            <section class="list-left">
+                                                <h5 class="title">${goods.gname}</h5>
+                                                <span class="adprice">￥${goods.price}</span>
+                                            </section>
+                                            <div class="clearfix"></div>
+                                        </li>
+                                    </a>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--pets-->
+                    <div>
+                        <div class="category">
+                            <ul class="list">
+                                <c:forEach items="${goodsList5}" var="goods">
+                                    <a href="single.html?id=${goods.gid}">
+                                        <li>
+                                            <img src="<%=basePath%>static/images/${goods.picture}" title="" alt="" />
+                                            <section class="list-left">
+                                                <h5 class="title">${goods.gname}</h5>
+                                                <span class="adprice">￥${goods.price}</span>
+                                            </section>
+                                            <div class="clearfix"></div>
+                                        </li>
+                                    </a>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--books-->
+                    <div>
+                        <div class="category">
+                            <ul class="list">
+                                <c:forEach items="${goodsList6}" var="goods">
+                                    <a href="single.html?id=${goods.gid}">
+                                        <li>
+                                            <img src="<%=basePath%>static/images/${goods.picture}" title="" alt="" />
+                                            <section class="list-left">
+                                                <h5 class="title">${goods.gname}</h5>
+                                                <span class="adprice">￥${goods.price}</span>
+                                            </section>
+                                            <div class="clearfix"></div>
+                                        </li>
+                                    </a>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--fashion-->
+                    <div>
+                        <div class="category">
+                            <ul class="list">
+                                <c:forEach items="${goodsList7}" var="goods">
+                                    <a href="single.html?id=${goods.gid}">
+                                        <li>
+                                            <img src="<%=basePath%>static/images/${goods.picture}" title="" alt="" />
+                                            <section class="list-left">
+                                                <h5 class="title">${goods.gname}</h5>
+                                                <span class="adprice">￥${goods.price}</span>
+                                            </section>
+                                            <div class="clearfix"></div>
+                                        </li>
+                                    </a>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--apartment-->
+                    <div>
+                        <div class="category">
+                            <ul class="list">
+                                <c:forEach items="${goodsList8}" var="goods">
+                                    <a href="single.html?id=${goods.gid}">
+                                        <li>
+                                            <img src="<%=basePath%>static/images/${goods.picture}" title="" alt="" />
+                                            <section class="list-left">
+                                                <h5 class="title">${goods.gname}</h5>
+                                                <span class="adprice">￥${goods.price}</span>
+                                            </section>
+                                            <div class="clearfix"></div>
+                                        </li>
+                                    </a>
+                                </c:forEach>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -115,6 +247,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="clearfix"></div>
         </div>
     </div>
+</div>
 </div>
 
 <!--footer-->
@@ -124,7 +257,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="footer-logo">
                 <a href="index.html"><span>二次</span>购</a>
             </div>
-
             <div class="copyrights">
                 <p>Copyright &copy; 2016.Company name All rights reserved.</p>
             </div>

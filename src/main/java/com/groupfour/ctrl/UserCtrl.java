@@ -21,11 +21,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 用户数据后台接口
+ * 用户控制器，主要实现用户的登陆、注册、注销的等功能
  */
 @Controller
 @RequestMapping("/")
-public class UserCtrl extends BaseCtrl{
+public class UserCtrl extends BaseCtrl {
 
     private static final Logger log = LoggerFactory.getLogger(UserCtrl.class);
 
@@ -37,32 +37,32 @@ public class UserCtrl extends BaseCtrl{
     }
 
     @RequestMapping("loginJudge")
-    public String login(@RequestParam("account") String account,@RequestParam("password") String password, HttpServletRequest request) {
-        if(StringUtils.isNotBlank(account) && StringUtils.isNotBlank(password)){
-            User user=new User();
+    public String login(@RequestParam("account") String account, @RequestParam("password") String password, HttpServletRequest request) {
+        if (StringUtils.isNotBlank(account) && StringUtils.isNotBlank(password)) {
+            User user = new User();
             user.setAccount(account);
             user.setPassword(password);
-            User actualUser=userService.userLogin(user);
-            if(actualUser!=null){
-                request.getSession().setAttribute("account",actualUser.getAccount());
-                request.getSession().setAttribute("username",actualUser.getUsername());
-                if(actualUser.getRole()==1){
+            User actualUser = userService.userLogin(user);
+            if (actualUser != null) {
+                request.getSession().setAttribute("account", actualUser.getAccount());
+                request.getSession().setAttribute("username", actualUser.getUsername());
+                if (actualUser.getRole() == 1) {
                     return redirect("/manager.html");
                 }
                 return redirect("/information.html");
             }
         }
-        request.getSession().setAttribute("msg","登陆失败请检查用户名和密码");
+        request.getSession().setAttribute("msg", "登陆失败请检查用户名和密码");
         return redirect("/login.html");
     }
 
     @RequestMapping("loginOut")
-    public String loginOut(HttpServletRequest request, HttpServletResponse response){
-        if(request.getSession().getAttribute("account")!=null){
-            request.getSession().setAttribute("account",null);
-            request.getSession().setAttribute("username",null);
+    public String loginOut(HttpServletRequest request, HttpServletResponse response) {
+        if (request.getSession().getAttribute("account") != null) {
+            request.getSession().setAttribute("account", null);
+            request.getSession().setAttribute("username", null);
         }
-        return  redirect("/index.html");
+        return redirect("/index.html");
     }
 
     @RequestMapping("register.json")
@@ -86,7 +86,7 @@ public class UserCtrl extends BaseCtrl{
                 try {
                     userService.userRegister(user);
                     errCode = 1;
-                    errMsg="注册成功!";
+                    errMsg = "注册成功!";
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -104,7 +104,7 @@ public class UserCtrl extends BaseCtrl{
         String account = map.get("account");
         String email = map.get("email");
         String password = map.get("password");
-        String username=map.get("username");
+        String username = map.get("username");
         if (StringUtils.isBlank(username))
             return "请输入用户名";
         if (StringUtils.isBlank(account))

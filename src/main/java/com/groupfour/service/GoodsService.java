@@ -20,10 +20,9 @@ public interface GoodsService {
     /**
      * 获取未审核的商品列表（仅供管理员使用）
      *
-     * @param account 管理员账号
      * @return
      */
-    List<Goods> getUncheckGoodsList(String account);
+    List<Goods> selectUncheckGoodsList();
 
     /**
      * 获得商品的所有评价列表
@@ -62,4 +61,12 @@ public interface GoodsService {
      * @return
      */
     List<Goods> selectHotGoodList();
+
+    /**
+     * 根据分类id来获取已发布的商品列表
+     *
+     * @param id 分类id
+     * @return
+     */
+    List<Goods> selectGoodListByClassify(int id);
 }

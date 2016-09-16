@@ -183,7 +183,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <div class="category" id="goods">
                                         <ul class="list">
                                             <c:forEach items="${myGoodList}" var="goods">
-                                                <a href="showjudge.html?id=${goods.gid}">
+                                                <a href="single.html?id=${goods.gid}">
                                                     <li>
                                                         <img src="<%=basePath%>static/images/${goods.picture}" title="" alt="" />
                                                         <section class="list-left">

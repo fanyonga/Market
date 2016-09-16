@@ -21,7 +21,7 @@ public class TestSpringDao {
 //             ) {
 //            System.out.println(u.getAccount());
 //        }
-        User u=dao.selectUserByAccount("123123");
-        System.out.println(u.getAccount());
+//        User u=dao.selectUserByAccount("123123");
+//        System.out.println(u.getAccount());
     }
 }

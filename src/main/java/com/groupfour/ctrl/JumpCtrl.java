@@ -1,5 +1,6 @@
 package com.groupfour.ctrl;
 
+import com.groupfour.entity.Evaluates;
 import com.groupfour.entity.Goods;
 import com.groupfour.entity.Orders;
 import com.groupfour.entity.User;
@@ -21,9 +22,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 跳转请求类，并实现用户访问权限
+ * 跳转请求控制器，隐藏底层实现，并实现用户访问权限的控制，并添加基本的数据信息
  *
  */
+
 @Controller
 @RequestMapping("/")
 public class JumpCtrl extends BaseCtrl{
@@ -52,14 +54,7 @@ public class JumpCtrl extends BaseCtrl{
 
     @RequestMapping("index.html")
     public String toIndex(HttpServletRequest request, HttpServletResponse response){
-        List<Goods> goodsList=new ArrayList<Goods>();
-        for(int i=1;i<=12;i++){
-            Goods goods=new Goods();
-            goods.setGid(i);
-            goods.setPicture("bk"+i+".jpg");
-            goods.setPrice(i*100.00);
-            goodsList.add(goods);
-        }
+        List<Goods> goodsList=goodsService.selectHotGoodList();
         request.setAttribute("goodList",goodsList);
         return "index";
     }
@@ -84,6 +79,11 @@ public class JumpCtrl extends BaseCtrl{
 
     @RequestMapping("categories.html")
     public String toCategories(HttpServletRequest request, HttpServletResponse response){
+        //添加各个分类的商品的信息
+        for(int i=1;i<=8;i++){
+            List<Goods> goodsList=goodsService.selectGoodListByClassify(i);
+            request.setAttribute("goodsList"+i,goodsList);
+        }
         return "categories";
     }
 
@@ -95,7 +95,6 @@ public class JumpCtrl extends BaseCtrl{
         }
         //购物车的商品列表
         List<Goods> goodsList=new ArrayList<Goods>();
-
         Cookie[] cookies=request.getCookies();
         for (Cookie cookie:cookies) {
             if(cookie.getName().startsWith(account+"&&goods")){
@@ -133,6 +132,8 @@ public class JumpCtrl extends BaseCtrl{
             User user=userService.selectUserByAccount(account);
             if(user.getRole()==1){
                 logger.info("现在管理员："+user.getUsername()+"进入后台管理页面");
+                List<Goods> goodsList=goodsService.selectUncheckGoodsList();
+                request.setAttribute("checkGoodList",goodsList);
                 return "manager";
             }
         }
@@ -141,6 +142,8 @@ public class JumpCtrl extends BaseCtrl{
 
     @RequestMapping("showjudge.html")
     public String toShowJudge(@RequestParam("id") int id,HttpServletRequest request, HttpServletResponse response){
+        List<Evaluates> evaluatesList=goodsService.getGoodsEvalatesList(id);
+        request.setAttribute("evaluatesList",evaluatesList);
         return "showjudge";
     }
 
