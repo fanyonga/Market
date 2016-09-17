@@ -17,4 +17,4 @@
 * 普通用户两个：可以注册，用来作为商家和客户：可以上传商品、购买商品
 * 系统用户一个：不可已注册，用来做用户管理和商品审核管理
 
-具体账号登陆信息见`src/main/resources/dbscript/shop-create-new.sql`
+具体账号登陆信息见`src/main/resources/dbscript/shop-insert.sql`
